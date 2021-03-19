@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, 
+	initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ 	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ 	 <script src="results.js"></script>
+ 	 <style>
+ 	 	* {
+ 	 		background-color: black;
+ 	 	}
+
+ 	 	.results {
+ 	 		text-align: center;
+ 	 		color: red;
+ 	 	}
+
+ 	 	img {
+  			display: block;
+  			margin-left: auto;
+  			margin-right: auto;
+  			padding-top: 20px;
+		}
+
+		#vampire_table {
+			color: red;
+			
+		}
+
+ 	 </style>
+
+</head>
+<body>
+ 	 	
+ 	<div class="results">
+ 	 	<h1>Is my Classmate a Vampire?</h1>
+ 	 	<h2> Your Classmate is</h2>
+ 	 	<h2 id="replace">------------------------------</h2>
+ 	 	<button type="button" id="results_button" 
+ 	 		onclick="showResults()"> Show Results based on Form </button>
+ 	 	<button type="button" id="Random_button" onclick="randomGuess()">
+ 	 		Random Decision
+ 	 	</button>
+ 	 	<button type="button" id="reset_button"
+ 	 		onclick="reset()">Reset</button>
+ 	 	<div id="namespace" style="padding: 20px;">
+ 	 	</div>
+ 	</div>
+ 	<div>
+ 		<img id="result_image" src="src/question_mark.jpeg" style="width:300px;height: 300px;">
+ 	</div>
+ 	<div style="padding-top: 50px;">
+ 		<div class="col-md-6">
+ 			<table class="table table-bordered" id="vampire_table">
+ 				
+ 				<caption>Classmates Results</caption>
+ 				<thead>
+ 					<th>Classmate</th>
+ 					<th>Method</th>
+ 					<th>Results</th>
+ 				</thead>
+ 				<tbody>
+ 				</tbody>
+ 			</table>
+ 		</div>
+ 		<div class="col-md-6" style="padding-left: 100px; padding-top: 40px;">
+ 			<div id="pie_chart"></div>
+ 		</div>
+ 	</div>
+ 		
+
+
+</body>
