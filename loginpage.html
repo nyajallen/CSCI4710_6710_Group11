@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+	<head>
+		<title>Login</title>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript">
+    		function output_user_info(){
+    
+     		var user_name_str= "You are signed in with username: " + document.getElementById('user_name').value + " ";
+   		var check_box;
+		if(document.getElementById("remember_me").checked)
+		{
+		  check_box_str = "Your username and password will be remembered. ";
+		}
+		else
+  		{
+		  check_box_str = "Your username and password will not be remembered. ";
+		}
+
+		document.getElementById('user_info').innerHTML = user_name_str + check_box_str;
+		}
+  </script>
+
+
+
+		<style>
+			ul {
+			  list-style-type: none;
+			  margin: 0;
+			  padding: 0;
+			  overflow: hidden;
+			  background-color: #333;
+			}
+
+			li {
+			  float: left;
+			}
+
+			li a {
+			  display: block;
+			  color: red;
+			  text-align: center;
+			  padding: 14px 16px;
+			  text-decoration: none;
+			}
+
+			li a:hover {
+			  background-color: #111;
+			}
+
+		
+		</style>
+
+	</head>
+	<body>
+
+		<ul>
+
+		  <li><a href="index.html">Introduction</a></li>
+		  <li><a class="active" href="loginpage.html">Login</a></li>
+		  
+
+		</ul>
+
+		<body>    
+    <h2>Login Page</h2><br>    
+    <div class="login">    
+    <form id="login" method="get" action="login.php">    
+        <label for="user_name">UserName</label>        
+        <input type="text" id="user_name" placeholder="Username">    
+        <br><br>    
+        <label for="pass_word">Password</label>         
+        <input type="Password" id="pass_word" placeholder="Password">    
+        <br><br>     
+        <label><input type="checkbox" id="remember_me">Remember me</label>        
+        <br><br>    
+        Forgot <a href="#">Password</a>    
+    </form>   
+
+	<button class="btn btn-primary" onclick="output_user_info()">Login</button>
+  
+  	<p id="user_info"></p>
+  
+</div>    
+</body>    
+</html>     
+		
+	</body>
+	
+</html>
