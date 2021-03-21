@@ -63,13 +63,16 @@ function loadJSONData() {
 // called for threshold results
 function showResults(){
 
+	var sum = sessionStorage.getItem("Sum");
+	var name = sessionStorage.getItem("Name");
+
 	if(sum > 6){
 		document.getElementById("replace").innerHTML="A Vampire!";
 		document.getElementById("result_image").src="src/vampire.png";
 		isVampire =true;
 		vampires +=1;
 		addToChart();
-		createTableRow();
+		createTableRow(name, "Threshold");
 	}
 	else {
 		document.getElementById("replace").innerHTML="Not A Vampire!";
@@ -77,7 +80,7 @@ function showResults(){
 		isVampire = false;
 		human +=1;
 		addToChart();
-		createTableRow();
+		createTableRow(name, "Threshold");
 	}
 }
 

@@ -12,9 +12,11 @@
     <link rel="icon" type="image/x-icon" href="assets/img/create.png" />
     <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+    <script src="results.js"></script>
+    <script src="forms.js"></script>
 
     <style>
-    body 
+    body
     {
         background-color: black;
         color: darkred;
@@ -50,7 +52,7 @@
 			li a:hover {
 			  background-color: #111;
 			}
-            
+
     </style>
 </head>
 
@@ -58,35 +60,34 @@
 
 
     <ul>
-        
+
         <li><a class="active" href="loginpage.html">Login</a></li>
         <li><a href="index.html">Introduction</a></li>
         <li><a class="active" href="form.html">Vampire Quiz</a></li>
         <li><a class="active" href="results_page.html">Results</a></li>
-        
-        
+
+
 
       </ul>
 
     <form>
 
         <div class="form-row">
-            <div class="form-group col-md-6"><label class="text-dark" for="inputShadow">Does your classmate have a shadow?</label><input class="form-control py-4" id="inputName" type="text" /></div>
+            <div class="form-group col-md-6"><label class="text-dark" for="inputName">What is your classmate's name?</label><input class="form-control py-4" id="inputName" type="text" /></div>
             <br>
-            <div class="form-group col-md-6"><label class="text-dark" for="inputGarlic">Does your classmate like garlic?</label><input class="form-control py-4" id="inputDate" type="text" /></div>
+            <div class="form-group col-md-6"><label class="text-dark" for="inputShadow">Does your classmate have a shadow?</label><input class="form-control py-4" id="inputShadow" type="text" /></div>
             <br>
-            <div class="form-group col-md-6"><label class="text-dark" for="inputPale">Does your classmate have a pale complexion?</label><input class="form-control py-4" id="inputAdressOne" type="text"  /></div>
+            <div class="form-group col-md-6"><label class="text-dark" for="inputGarlic">Does your classmate like garlic?</label><input class="form-control py-4" id="inputGarlic" type="text" /></div>
             <br>
-            <div class="form-group col-md-6"><label class="text-dark" for="inputAdressTwo">Does your classmate have an accent?</label><input class="form-control py-4" id="inputAdressTwo" type="text" /></div>
+            <div class="form-group col-md-6"><label class="text-dark" for="inputPale">Does your classmate have a pale complexion?</label><input class="form-control py-4" id="inputPale" type="text" /></div>
             <br>
-
         </div>
 
         <div class="form-group"><label class="text-dark" for="inputAddress">Extra Information</label><textarea class="form-control py-3" id="inputAddress" type="text" placeholder="ex: My classmate also has...." rows="4"></textarea></div>
 
         <!–– Button to Submit Shipment Information ––>
         <div class="text-center">
-            <button class="btn btn-primary btn-marketing mt-4" type="button" onclick="closeSearch()">Get your result</button>
+            <button class="btn btn-primary btn-marketing mt-4" type="button" onclick="calculateSum()">Get your result</button>
         </div><br>
 
     </form>
