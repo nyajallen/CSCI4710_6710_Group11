@@ -28,6 +28,6 @@ function calculateSum() {
     sessionStorage.setItem("Name", name);
   }
 
-  window.location.href = "results_page.html";
+  window.open("results_page.html");
 
 }

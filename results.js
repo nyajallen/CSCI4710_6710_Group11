@@ -78,7 +78,7 @@ function showResults(){
 		document.getElementById("replace").innerHTML="Not A Vampire!";
 		document.getElementById("result_image").src="src/human.jpg";
 		isVampire = false;
-		human +=1;
+		humans +=1;
 		addToChart();
 		createTableRow(name, "Threshold");
 	}
