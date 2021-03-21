@@ -3,7 +3,7 @@
 <head>
 	<title>Results Page</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, 
+	<meta name="viewport" content="width=device-width,
 	initial-scale=1">
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,25 +29,31 @@
 
 		#vampire_table {
 			color: red;
-			
+
+		}
+
+		button {
+			color: red;
+		}
+
+		#reset_button2 {
+			float: right;
 		}
 
  	 </style>
 
 </head>
 <body>
- 	 	
+
  	<div class="results">
  	 	<h1>Is my Classmate a Vampire?</h1>
  	 	<h2> Your Classmate is</h2>
  	 	<h2 id="replace">------------------------------</h2>
- 	 	<button type="button" id="results_button" 
+ 	 	<button type="button" id="results_button"
  	 		onclick="showResults()"> Show Results based on Form </button>
  	 	<button type="button" id="Random_button" onclick="randomGuess()">
  	 		Random Decision
  	 	</button>
- 	 	<button type="button" id="reset_button"
- 	 		onclick="reset()">Reset</button>
  	 	<div id="namespace" style="padding: 20px;">
  	 	</div>
  	</div>
@@ -57,7 +63,7 @@
  	<div style="padding-top: 50px;">
  		<div class="col-md-6">
  			<table class="table table-bordered" id="vampire_table">
- 				
+
  				<caption>Classmates Results</caption>
  				<thead>
  					<th>Classmate</th>
@@ -67,12 +73,15 @@
  				<tbody>
  				</tbody>
  			</table>
+			<button type="button" id="example_json"
+				onclick="loadJSONData()">Show Example Data</button>
+			<button type="button" id="reset_button2"
+				onclick="reset()">Reset</button>
  		</div>
  		<div class="col-md-6" style="padding-left: 100px; padding-top: 40px;">
  			<div id="pie_chart"></div>
  		</div>
  	</div>
- 		
 
 
 </body>
