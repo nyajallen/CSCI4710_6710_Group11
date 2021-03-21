@@ -109,13 +109,13 @@ function randomGuess() {
 
 // gets random decision
 function getRandom() {
-	var num = getRandomInt(6);
+	var num = getRandomInt(21);
 	var name = document.getElementById("name").value;
 	document.getElementById("ask").remove();
 	document.getElementById("name").remove();
 	document.getElementById("enter").remove();
 
-	if(num >= 4){
+	if(num % 2 != 0){
 		document.getElementById("replace").innerHTML="A Vampire!";
 		document.getElementById("result_image").src="src/vampire.png";
 		isVampire = true;
