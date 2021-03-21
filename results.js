@@ -35,7 +35,7 @@ var classmates = {
          ]
 }
 
-// Add sample data to table
+// Add sample JSON data to table
 function loadJSONData() {
 	var name;
 	var method;
