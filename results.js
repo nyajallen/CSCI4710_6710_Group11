@@ -73,8 +73,9 @@ function showResults(){
 		vampires +=1;
 		addToChart();
 		createTableRow(name, "Threshold");
-	}
-	else {
+	} else if(sum === null) {
+    window.alert("Must fill out form");
+  } else {
 		document.getElementById("replace").innerHTML="Not A Vampire!";
 		document.getElementById("result_image").src="src/human.jpg";
 		isVampire = false;
@@ -82,6 +83,7 @@ function showResults(){
 		addToChart();
 		createTableRow(name, "Threshold");
 	}
+
 }
 
 //called for random results
