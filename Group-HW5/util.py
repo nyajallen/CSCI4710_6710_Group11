@@ -12,7 +12,7 @@ query = " SELECT index WHERE age >=36 AND gender = 'female'"
 connection = sqlite3.connect(database_file)
     cursor = connection.cursor()
     cursor.execute(query)
-    results = cursor.fetchall()
+    query_results = cursor.fetchall()
     cursor.close()
     connection.close()
 
