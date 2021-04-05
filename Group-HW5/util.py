@@ -1,5 +1,33 @@
 from sklearn.cluster import KMeans
 import numpy as np
+import sqlite3
+
+def query(db, query_str):
+
+query = " SELECT index WHERE age <=35 AND gender = 'male'"
+query = " SELECT index WHERE age >=36 AND gender = 'male'"
+query = " SELECT index WHERE age <=35 AND gender = 'female'"
+query = " SELECT index WHERE age >=36 AND gender = 'female'"
+
+connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute(query)
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+
+return query_results
+
+def get_country(db, country):
+
+query = "SELECT index, Country FROM index GROUP BY Country"
+connection = sqlite3.connect(database_file)
+    cursor = connection.cursor()
+    cursor.execute(query)
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+return results
 
 
 def cluster_user_data(input_data, emotional_col_start=4, emotional_col_end=9, n_clusters=3):
