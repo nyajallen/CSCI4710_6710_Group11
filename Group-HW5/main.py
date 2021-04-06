@@ -9,14 +9,13 @@ import util
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = \
-    'sqlite:///' + os.path.join(basedir, 'WebAppsDatbase.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///WebAppsDatabase.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-Base = automap_base()
-Base.prepare(db.engine, reflect=True)
-covidData = Base.classes.covid_data
+covidData = db.Table('CovidData', db.metadata, autoload=True, autoload_with=db.engine)
+
 
 column_names = ["index", "What country do you live in?", "How old are you?", "What is your gender?",
                 "To what extent do you feel FEAR due to the coronavirus?",
@@ -33,7 +32,7 @@ def index():
     user_data = db.session.query(covidData).all()
     labels = util.cluster_user_data(user_data)
     return render_template('index.html', labels_html=labels, column_html=column_names, data_html=user_data)
-
+    
 
 if __name__ == '__main__':
     # set debug mode
