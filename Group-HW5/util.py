@@ -23,8 +23,16 @@ def query(db, query_group):
     return query_results
 
 
-def get_country(db, country):
-    query = "SELECT index, Country FROM index GROUP BY Country"
+def get_country(db, country_group):
+    group = {
+        1: "SELECT index FROM Country WHERE Country = 'USA'",
+        2: "SELECT index FROM Country WHERE Country = 'Canada'",
+        3: "SELECT index FROM Country WHERE Country = 'Switzerland'",
+        4: "SELECT index FROM Country WHERE Country = 'UK'"
+    }
+    
+    query =group.get(query_group, "Null")
+                     
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
     cursor.execute(query)
