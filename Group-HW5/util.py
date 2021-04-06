@@ -24,14 +24,8 @@ def query(db, query_group):
 
 
 def get_country(db, country_group):
-    group = {
-        1: "SELECT index FROM Country WHERE Country = 'USA'",
-        2: "SELECT index FROM Country WHERE Country = 'Canada'",
-        3: "SELECT index FROM Country WHERE Country = 'Switzerland'",
-        4: "SELECT index FROM Country WHERE Country = 'UK'"
-    }
     
-    query =group.get(query_group, "Null")
+    query = "SELECT * Country FROM CovidData GROUP BY Country"
                      
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
