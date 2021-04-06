@@ -30,8 +30,12 @@ column_names = ["index", "What country do you live in?", "How old are you?", "Wh
 @app.route('/')
 def index():
     user_data = db.session.query(covidData).all()
+    group1 = util.query('WebAppsDatabase.db', 1)
+    group2 = util.query('WebAppsDatabase.db', 2)
+    group3 = util.query('WebAppsDatabase.db', 3)
+    group4 = util.query('WebAppsDatabase.db', 4)
     labels = util.cluster_user_data(user_data)
-    return render_template('index.html', labels_html=labels, column_html=column_names, data_html=user_data)
+    return render_template('index.html', labels_html=labels, column_html=column_names, data1_html=group1, data2_html=group2, data3_html=group3, data4_html=group4)
     
 
 if __name__ == '__main__':

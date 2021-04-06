@@ -5,10 +5,10 @@ import sqlite3
 
 def query(db, query_group):
     group = {
-        1: " SELECT index WHERE age <=35 AND gender = 'male'",
-        2: " SELECT index WHERE age >=36 AND gender = 'male'",
-        3: " SELECT index WHERE age <=35 AND gender = 'female'",
-        4: " SELECT index WHERE age >=36 AND gender = 'female'"
+        1: "SELECT * FROM CovidData WHERE age <=35 AND gender = 'Male'",
+        2: "SELECT * FROM CovidData WHERE age >=36 AND gender = 'Male'",
+        3: "SELECT * FROM CovidData WHERE age <=35 AND gender = 'Female'",
+        4: "SELECT * FROM CovidData WHERE age >=36 AND gender = 'Female'"
     }
 
     query = group.get(query_group, "Null")
