@@ -24,8 +24,25 @@ def query(db, query_group):
 
 
 def get_country(db, country_group):
+    group = {
+        1: "SELECT * FROM CovidData WHERE Country = 'USA'",
+        2: "SELECT * FROM CovidData WHERE Country = 'Canada'",
+        3: "SELECT * FROM CovidData WHERE Country = 'UK'",
+        4: "SELECT * FROM CovidData WHERE Country = 'Romania'",
+        5: "SELECT * FROM CovidData WHERE Country = 'Switzerland'",
+        6: "SELECT * FROM CovidData WHERE Country = 'Rwanda'",
+        7: "SELECT * FROM CovidData WHERE Country = 'Cyprus'",
+        8: "SELECT * FROM CovidData WHERE Country = 'Israel'",
+        9: "SELECT * FROM CovidData WHERE Country = 'Portugal'",
+        10: "SELECT * FROM CovidData WHERE Country = 'Ireland I'",
+        11: "SELECT * FROM CovidData WHERE Country = 'Germany'",
+        12: "SELECT * FROM CovidData WHERE Country = 'Australia'",
+        13: "SELECT * FROM CovidData WHERE Country = 'China'",
+        14: "SELECT * FROM CovidData WHERE Country = 'New Zealand'",
+        15: "SELECT * FROM CovidData WHERE Country = 'Palestine'"
+    }
     
-    query = "SELECT * Country FROM CovidData GROUP BY Country"
+    query = group.get(country_group, "Null")
                      
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
