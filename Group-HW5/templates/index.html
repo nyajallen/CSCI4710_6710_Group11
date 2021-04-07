@@ -25,6 +25,7 @@
 	<p>{{data_part}}</p> -->
 
 	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 1 (young (<=35), male), USA</caption>
 		<thead class="thead-dark">
 		  <tr>
 			{% for item in column_html %}
@@ -33,7 +34,7 @@
 		  </tr>
 		</thead>
 		<tbody>
-		  {% for row in data1_html %}
+		  {% for row in data1usa_html %}
 			   <tr>
 				{% for data in row %}
 					<td>{{ data }}</td>
@@ -45,6 +46,7 @@
 
 
 	  <table class="table table-striped">
+	  	<caption style="font-size: 160%; font-weight: bold;">Group 1 (young (<=35), male), Canada</caption>
 		<thead class="thead-dark">
 		  <tr>
 			{% for item in column_html %}
@@ -53,7 +55,7 @@
 		  </tr>
 		</thead>
 		<tbody>
-		  {% for row in data2_html %}
+		  {% for row in data1canada_html %}
 			   <tr>
 				{% for data in row %}
 					<td>{{ data }}</td>
@@ -65,6 +67,7 @@
 
 
 	  <table class="table table-striped">
+	  	<caption style="font-size: 160%; font-weight: bold;">Group 1 (young (<=35), male), UK</caption>
 		<thead class="thead-dark">
 		  <tr>
 			{% for item in column_html %}
@@ -73,7 +76,7 @@
 		  </tr>
 		</thead>
 		<tbody>
-		  {% for row in data3_html %}
+		  {% for row in data1uk_html %}
 			   <tr>
 				{% for data in row %}
 					<td>{{ data }}</td>
@@ -85,6 +88,7 @@
 
 	  
 	  <table class="table table-striped">
+	  	<caption style="font-size: 160%; font-weight: bold;">Group 1 (young (<=35), male), Romania</caption>
 		<thead class="thead-dark">
 		  <tr>
 			{% for item in column_html %}
@@ -93,7 +97,7 @@
 		  </tr>
 		</thead>
 		<tbody>
-		  {% for row in data4_html %}
+		  {% for row in data1romania_html %}
 			   <tr>
 				{% for data in row %}
 					<td>{{ data }}</td>

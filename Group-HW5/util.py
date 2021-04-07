@@ -3,7 +3,7 @@ import numpy as np
 import sqlite3
 
 
-def query(db, query_group):
+def query(db, query_group, country):
     group = {
         1: "SELECT * FROM CovidData WHERE age <=35 AND gender = 'Male'",
         2: "SELECT * FROM CovidData WHERE age >=36 AND gender = 'Male'",
@@ -11,7 +11,7 @@ def query(db, query_group):
         4: "SELECT * FROM CovidData WHERE age >=36 AND gender = 'Female'"
     }
 
-    query = group.get(query_group, "Null")
+    query = group.get(query_group, "Null") + " AND country = '%s' COLLATE NOCASE" % (country)
 
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
@@ -21,36 +21,6 @@ def query(db, query_group):
     connection.close()
 
     return query_results
-
-
-def get_country(db, country_group):
-    group = {
-        1: "SELECT * FROM CovidData WHERE Country = 'USA'",
-        2: "SELECT * FROM CovidData WHERE Country = 'Canada'",
-        3: "SELECT * FROM CovidData WHERE Country = 'UK'",
-        4: "SELECT * FROM CovidData WHERE Country = 'Romania'",
-        5: "SELECT * FROM CovidData WHERE Country = 'Switzerland'",
-        6: "SELECT * FROM CovidData WHERE Country = 'Rwanda'",
-        7: "SELECT * FROM CovidData WHERE Country = 'Cyprus'",
-        8: "SELECT * FROM CovidData WHERE Country = 'Israel'",
-        9: "SELECT * FROM CovidData WHERE Country = 'Portugal'",
-        10: "SELECT * FROM CovidData WHERE Country = 'Ireland I'",
-        11: "SELECT * FROM CovidData WHERE Country = 'Germany'",
-        12: "SELECT * FROM CovidData WHERE Country = 'Australia'",
-        13: "SELECT * FROM CovidData WHERE Country = 'China'",
-        14: "SELECT * FROM CovidData WHERE Country = 'New Zealand'",
-        15: "SELECT * FROM CovidData WHERE Country = 'Palestine'"
-    }
-    
-    query = group.get(country_group, "Null")
-                     
-    connection = sqlite3.connect(db)
-    cursor = connection.cursor()
-    cursor.execute(query)
-    results = cursor.fetchall()
-    cursor.close()
-    connection.close()
-    return results
 
 
 def cluster_user_data(input_data, emotional_col_start=4, emotional_col_end=9, n_clusters=3):
