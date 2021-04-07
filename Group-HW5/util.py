@@ -22,6 +22,8 @@ def query(db, query_group, country):
 
     return query_results
 
+def get_country(data):
+    return data[1]
 
 def cluster_user_data(input_data, emotional_col_start=4, emotional_col_end=9, n_clusters=3):
     """

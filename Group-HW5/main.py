@@ -30,8 +30,43 @@ column_names = ["index", "What country do you live in?", "How old are you?", "Wh
 @app.route('/')
 def index():
 
-    user_data = db.session.query(covidData).all()
-    
+    # list of group numbers
+    groups = [1, 2, 3, 4]
+
+    # list to hold group data
+    user_data = []
+
+    # list of all countries
+    countries = ['USA', 'Canada', 'UK', 'Romania', 'Switzerland', 'Rwanda', 'Hong Kong', 'France', 'C yprus', \
+                 'Israel', 'Portugal', 'Ireland I', 'Germany', 'Australia', 'China', 'New Zealand', 'Palestine']
+
+    # loop to query data for each group
+    for x in groups:
+
+        # loop split data by country
+        for country in countries:
+            data = util.query('WebAppsDatabase.db', x, country)
+
+            # loop to split data if there are more than 10 elements
+            if len(data) >= 10:
+                labels = util.cluster_user_data(data)
+                data = util.split_user_data(data, labels)
+
+            # adds data to user_data list
+            user_data.append(data)
+
+    print(len(user_data))
+
+    # loop to see if an element is a list of split data 
+    # Only used to see which countries need an extra table
+    for data in user_data:
+        if len(data) != 0:
+            if isinstance(data[0], list):
+                country = util.get_country(data[0][0])
+                print(country)
+                print(user_data.index(data))
+                print(len(data))
+
     grp1usa = util.query('WebAppsDatabase.db', 1, 'USA')
     grp1canada = util.query('WebAppsDatabase.db', 1, 'Canada')
     grp1uk = util.query('WebAppsDatabase.db', 1, 'UK')
@@ -96,22 +131,35 @@ def index():
     grp4china = util.query('WebAppsDatabase.db', 4, 'China')
     grp4nz = util.query('WebAppsDatabase.db', 4, 'New Zealand')
     grp4pal = util.query('WebAppsDatabase.db', 4, 'Palestine')
+
     
 
-    labels = util.cluster_user_data(user_data)
-    return render_template('index.html', labels_html=labels, column_html=column_names, 
-        data1usa_html= grp1usa, data1canada_html=grp1canada, data1uk_html=grp1uk, data1romania_html=grp1romania, data1switz_html=grp1switz,
-        data1rwanda_html= grp1rwanda, data1cyprus_html=grp1cyprus, data1isreal_html=grp1isreal, data1portugal_html=grp1portugal, data1ireland_html=grp1ireland,
-        data1germany_html= grp1germany, data1australia_html=grp1australia, data1china_html=grp1china, data1nz_html=grp1nz, data1pal_html=grp1pal,
-        data2usa_html= grp2usa, data2canada_html=grp2canada, data2uk_html=grp2uk, data2romania_html=grp2romania, data2switz_html=grp2switz,
-        data2rwanda_html= grp2rwanda, data2cyprus_html=grp2cyprus, data2isreal_html=grp2isreal, data1por2ugal_html=grp2portugal, data2ireland_html=grp2ireland,
-        data2germany_html= grp2germany, data2australia_html=grp2australia, data2china_html=grp2china, data2nz_html=grp2nz, data2pal_html=grp2pal,
-        data3usa_html= grp3usa, data3canada_html=grp3canada, data3uk_html=grp3uk, data3romania_html=grp3romania, data3switz_html=grp3switz,
-        data3rwanda_html= grp3rwanda, data3cyprus_html=grp3cyprus, data3isreal_html=grp3isreal, data3portugal_html=grp3portugal, data3ireland_html=grp3ireland,
-        data3germany_html= grp3germany, data3australia_html=grp3australia, data3china_html=grp3china, data3nz_html=grp3nz, data3pal_html=grp1pal,
-        data4usa_html= grp4usa, data4canada_html=grp4canada, data4uk_html=grp4uk, data4romania_html=grp4romania, data4switz_html=grp4switz,
-        data4rwanda_html= grp4rwanda, data4cyprus_html=grp4cyprus, data4isreal_html=grp4isreal, data4portugal_html=grp4portugal, data4ireland_html=grp4ireland,
-        data4germany_html= grp4germany, data4australia_html=grp4australia, data4china_html=grp4china, data4nz_html=grp4nz, data4pal_html=grp4pal)
+    
+    return render_template('index.html', column_html=column_names, 
+        data1usa1_html= user_data[0][0], data1usa2_html= user_data[0][1], data1usa3_html= user_data[0][2],
+        data1canada_html=grp1canada, data1uk_html=grp1uk,
+        data1romania1_html=user_data[3][0], data1romania2_html=user_data[3][1], data1romania3_html=user_data[3][2],
+        data1switz_html=grp1switz, data1rwanda_html= grp1rwanda, data1cyprus_html=grp1cyprus, data1isreal_html=grp1isreal,
+        data1portugal_html=grp1portugal, data1ireland_html=grp1ireland, data1germany_html= grp1germany, data1australia_html=grp1australia,
+        data1china_html=grp1china, data1nz_html=grp1nz, data1pal_html=grp1pal,
+        data2usa1_html= user_data[17][0], data2usa2_html= user_data[17][1], data2usa3_html= user_data[17][2],
+        data2canada_html=grp2canada, data2uk_html=grp2uk, data2romania_html=grp2romania, data2switz_html=grp2switz,
+        data2rwanda_html= grp2rwanda, data2cyprus_html=grp2cyprus, data2isreal_html=grp2isreal, data1por2ugal_html=grp2portugal,
+        data2ireland_html=grp2ireland, data2germany_html= grp2germany, data2australia_html=grp2australia, data2china_html=grp2china,
+        data2nz_html=grp2nz, data2pal_html=grp2pal,
+        data3usa1_html= user_data[34][0], data3usa2_html= user_data[34][1], data3usa3_html= user_data[34][2],
+        data3canada_html=grp3canada, data3uk_html=grp3uk,
+        data3romania1_html=user_data[37][0], data3romania2_html=user_data[37][1], data3romania3_html=user_data[37][2],
+        data3switz1_html=user_data[38][0], data3switz2_html=user_data[38][1], data3switz3_html=user_data[38][2],
+        data3rwanda_html= grp3rwanda, data3cyprus_html=grp3cyprus, data3isreal_html=grp3isreal, data3portugal_html=grp3portugal,
+        data3ireland_html=grp3ireland, data3germany_html= grp3germany, data3australia_html=grp3australia, data3china_html=grp3china,
+        data3nz_html=grp3nz, data3pal_html=grp1pal,
+        data4usa1_html= user_data[51][0], data4usa2_html= user_data[51][1], data4usa3_html= user_data[51][2],
+        data4canada1_html=user_data[52][0], data4canada2_html=user_data[52][1], data4canada3_html=user_data[52][2],
+        data4uk_html=grp4uk, data4romania1_html=user_data[54][0], data4romania2_html=user_data[54][1], data4romania3_html=user_data[54][2],
+        data4switz_html=grp4switz, data4rwanda_html= grp4rwanda, data4cyprus_html=grp4cyprus, data4isreal_html=grp4isreal,
+        data4portugal_html=grp4portugal, data4ireland_html=grp4ireland, data4germany_html= grp4germany, data4australia_html=grp4australia,
+        data4china_html=grp4china, data4nz_html=grp4nz, data4pal_html=grp4pal)
     
 
 if __name__ == '__main__':
