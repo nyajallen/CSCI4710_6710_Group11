@@ -34,7 +34,47 @@
 		  </tr>
 		</thead>
 		<tbody>
-		  {% for row in data1usa_html %}
+		  {% for row in data1usa1_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+
+	  <table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 1 (young (<=35), male), USA</caption>
+		<thead class="thead-dark">
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data1usa2_html %}
+			   <tr>
+				{% for data in row %}
+					<td>{{ data }}</td>
+				{% endfor %}
+			   </tr>
+		   {% endfor %}
+		</tbody>
+	  </table>
+
+	  <table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 1 (young (<=35), male), USA</caption>
+		<thead class="thead-dark">
+		  <tr>
+			{% for item in column_html %}
+				<th>{{item}}</th>
+			{% endfor %}
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for row in data1usa3_html %}
 			   <tr>
 				{% for data in row %}
 					<td>{{ data }}</td>
@@ -97,7 +137,7 @@
 		  </tr>
 		</thead>
 		<tbody>
-		  {% for row in data1romania_html %}
+		  {% for row in data1romania1_html %}
 			   <tr>
 				{% for data in row %}
 					<td>{{ data }}</td>
@@ -106,6 +146,46 @@
 		   {% endfor %}
 		</tbody>
 	  </table>
+
+	  <table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 1 (young (<=35), male), Romania</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data1romania_2html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 1 (young (<=35), male), Romania</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data1romania3_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
 
 	  <table class="table table-striped">
 		<caption style="font-size: 160%; font-weight: bold;">Group 1 (young (<=35), male), Switzerland</caption>
@@ -337,7 +417,47 @@
 		</tr>
 	  </thead>
 	  <tbody>
-		{% for row in  data2usa_html %}
+		{% for row in  data2usa1_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 2 (middle aged of old (>=36), male), USA</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in  data2usa2_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 2 (middle aged of old (>=36), male), USA</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in  data2usa3_html %}
 			 <tr>
 			  {% for data in row %}
 				  <td>{{ data }}</td>
@@ -637,7 +757,47 @@
 		</tr>
 	  </thead>
 	  <tbody>
-		{% for row in data3usa_html %}
+		{% for row in data3usa1_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 3 (young (<=35), female), USA</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data3usa2_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 3 (young (<=35), female), USA</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data3usa3_html %}
 			 <tr>
 			  {% for data in row %}
 				  <td>{{ data }}</td>
@@ -697,7 +857,47 @@
 		</tr>
 	  </thead>
 	  <tbody>
-		{% for row in data3romania_html %}
+		{% for row in data3romania1_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 3 (young (<=35), female), Romania</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data3romania2_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 3 (young (<=35), female), Romania</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data3romania3_html %}
 			 <tr>
 			  {% for data in row %}
 				  <td>{{ data }}</td>
@@ -717,7 +917,47 @@
 		</tr>
 	  </thead>
 	  <tbody>
-		{% for row in data3switz_html %}
+		{% for row in data3switz1_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 3 (young (<=35), female), Switzerland</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data3switz2_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 3 (young (<=35), female), Switzerland</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data3switz3_html %}
 			 <tr>
 			  {% for data in row %}
 				  <td>{{ data }}</td>
@@ -937,7 +1177,47 @@
 		</tr>
 	  </thead>
 	  <tbody>
-		{% for row in data4usa_html %}
+		{% for row in data4usa1_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 4 (middle-aged or old (>=36), female), USA</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data4usa2_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 4 (middle-aged or old (>=36), female), USA</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data4usa3_html %}
 			 <tr>
 			  {% for data in row %}
 				  <td>{{ data }}</td>
@@ -957,7 +1237,47 @@
 		</tr>
 	  </thead>
 	  <tbody>
-		{% for row in data4canada_html %}
+		{% for row in data4canada1_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 4 (middle-aged or old (>=36), female), Canada</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data4canada2_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 4 (middle-aged or old (>=36), female), Canada</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data4canada3_html %}
 			 <tr>
 			  {% for data in row %}
 				  <td>{{ data }}</td>
@@ -997,7 +1317,47 @@
 		</tr>
 	  </thead>
 	  <tbody>
-		{% for row in data4romania_html %}
+		{% for row in data4romania1_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 4 (middle-aged or old (>=36), female), Romania</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data4romania2_html %}
+			 <tr>
+			  {% for data in row %}
+				  <td>{{ data }}</td>
+			  {% endfor %}
+			 </tr>
+		 {% endfor %}
+	  </tbody>
+	</table>
+
+	<table class="table table-striped">
+		<caption style="font-size: 160%; font-weight: bold;">Group 4 (middle-aged or old (>=36), female), Romania</caption>
+	  <thead class="thead-dark">
+		<tr>
+		  {% for item in column_html %}
+			  <th>{{item}}</th>
+		  {% endfor %}
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for row in data4romania3_html %}
 			 <tr>
 			  {% for data in row %}
 				  <td>{{ data }}</td>
