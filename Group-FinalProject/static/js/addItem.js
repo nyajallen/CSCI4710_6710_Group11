@@ -11,3 +11,11 @@ function submit_handler() {
     }
 }
 
+function loadRenterPage() {
+    window.open("../templates/index.html", "_self")
+}
+
+function loadItemPage() {
+    window.open("../templates", "_self")
+}
+
