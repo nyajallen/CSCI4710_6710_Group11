@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="../static/js/addItem.js"></script>
+    <title>Add an Item</title>
+    <style>
+        .container-fluid {
+            list-style-type: none;
+            margin: 0;
+            padding: 0 10px;
+            /*The overflow property specifies whether to clip content or to add scrollbars when an element's content is too big to fit in a specified area.*/
+            overflow: hidden;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            /*default style includes an ugly underline*/
+            text-decoration: none;
+        }
+
+        li:hover {
+            background-color: #F0F8FF;
+        }
+        li:active {
+            background-color: aliceblue;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-primary">
+    <!-- .container-fluid class provides a full width container, spanning the entire width of the viewport -->
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color: white" href="#">Rent-An-Item</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#">Rent an Item</a></li>
+            <li><a class="active" href="AddItem.html">Add an Item</a></li>
+        </ul>
+        <ul class="nav navbar-right">
+            <li><a href="#">Account</a></li>
+        </ul>
+    </div>
+</nav>
+
+<h1 style="padding: 10px">Add an Item to Rent</h1>
+
+<div>
+    <form onsubmit="submit_handler()">
+        <div class="form-group col-md-6" id="form">
+                <label for="item_name">What is this Item? *</label>
+                <input type="text" class="form-control" id="item_name" placeholder="Ex: Blender, Drill" style="margin-bottom: 20px;" required>
+                <label for="category">What do you use this item for? *</label>
+                <select class="form-control" id="category" style="margin-bottom: 20px;" required>
+                    <option value="0">Select a Category</option>
+                    <option value='1'>Yard Tools</option>
+                    <option value='2'>Household Items</option>
+                    <option value='3'>Kitchen Gadgets</option>
+                    <option value='4'>Recreational Equipment</option>
+                    <option value="5">Party Rentals</option>
+                    <option value="6">Tools</option>
+                    <option value="7">Electronics</option>
+                    <option value="8">Automotive</option>
+                    <option value="9">Beach Supplies</option>
+                    <option value="10">Other</option>
+                </select>
+            <div style="vertical-align: top; margin-bottom: 20px;">
+                <label for="price">How much are renting this item for? *</label>
+                <input type="number" step="any" id="price" placeholder="Ex: 0.00" required>
+                <label for="per">per</label>
+                <input type="text" step="any" id="per" placeholder="Ex: hour, day">
+            </div>
+            <label for="description">Description of Item</label>
+            <textarea class="form-control" rows="5" id="description" style="margin-bottom: 20px"></textarea>
+            <label for="date_added">How Long is this Item Available? *<br>From:</label>
+            <input type="date" class="form-control" id="date_added" required>
+            <label for="due_date">To:</label>
+            <input type="date" class="form-control" id="due_date">
+            <input type="checkbox" id="indefinitely" style="margin-bottom: 20px">
+            <label for="indefinitely">Indefinitely</label>
+            <p><label for="photo">Add a photo</label></p>
+            <input type="file"  accept="image/*" name="image" id="photo"  onchange="loadFile(event)" style="margin-bottom: 20px">
+            <p><img id="output" width="200"  alt="" src="" style="margin-bottom: 20px"/></p>
+            <input type="submit" id="submit_btn" class="btn btn-info">
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!-- This means this is a bootstrap modal -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-md-9" style="text-align: right">
+                    <h1 class="modal-title" id="exampleModalLongTitle">Your Item is Listed!</h1>
+                </div>
+                <div class="col-md-3">
+                    <img src="images/checkmark.gif" alt="checkmark" height="50" width="50">
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <!-- ARIA (Accessible Rich Internet Applications) defines a way to make Web content and Web applications more accessible to people with disabilities. -->
+                    <!-- The aria-hidden property tells screen-readers if they should ignore the element. -->
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row" style="text-align: center">
+                        <img id="modal_photo" width="200" src="" alt="Item Photo"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mr-auto">
+                            <h5>Item Name: </h5>
+                        </div>
+                        <div class="col-md-6 mr-auto">
+                            <p id="modal_name"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mr-auto">
+                            <h5>Category: </h5>
+                        </div>
+                        <div class="col-md-6 mr-auto">
+                            <p id="modal_category"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mr-auto">
+                            <h5>Price: </h5>
+                        </div>
+                        <div class="col-md-6 mr-auto">
+                            <p id="modal_price"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mr-auto">
+                            <h5>Description: </h5>
+                        </div>
+                        <div class="col-md-6 mr-auto">
+                            <p id="modal_description"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mr-auto">
+                            <h5>Item Availability: </h5>
+                        </div>
+                        <div class="col-md-6 mr-auto">
+                            <p id="modal_availability"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- open renter page -->
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- open item listing page -->
+                <button type="button" class="btn btn-primary">View Item Listing</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
