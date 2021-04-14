@@ -83,7 +83,7 @@ def index():
         data3romania1_html=user_data[37][0], data3romania2_html=user_data[37][1], data3romania3_html=user_data[37][2],
         data3switz1_html=user_data[38][0], data3switz2_html=user_data[38][1], data3switz3_html=user_data[38][2],
         data3rwanda_html= user_data[39], data3portugal_html=user_data[44],
-        data3ireland_html=grp3ireland, data3germany_html= user_data[46], data3australia_html=user_data[47], data3china_html=user_data[48],
+        data3ireland_html=user_data[45], data3germany_html= user_data[46], data3australia_html=user_data[47], data3china_html=user_data[48],
         data4usa1_html= user_data[51][0], data4usa2_html= user_data[51][1], data4usa3_html= user_data[51][2],
         data4canada1_html=user_data[52][0], data4canada2_html=user_data[52][1], data4canada3_html=user_data[52][2],
         data4uk_html=user_data[53], data4romania1_html=user_data[54][0], data4romania2_html=user_data[54][1], data4romania3_html=user_data[54][2],
