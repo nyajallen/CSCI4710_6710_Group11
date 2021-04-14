@@ -1,3 +1,5 @@
+import json
+
 from sklearn.cluster import KMeans
 import numpy as np
 import sqlite3
@@ -24,8 +26,17 @@ def query(db, query_group, country):
         labels = cluster_user_data(query_results)
         query_results = split_user_data(query_results, labels)
 
+    description = {
+        1: "This group contains users from %s and are young males" % country,
+        2: "This group contains users from %s and are middle-aged to old males" % country,
+        3: "This group contains users from %s and are young females" % country,
+        4: "This group contains users from %s and are middle-aged to old females" % country
+    }
+
+    group_desc = description.get(query_group, "Null")
+
     query_results = {
-        'group %s' % query_group: query_results
+        'group %s' % query_group: {group_desc, query_results}
     }
 
     return query_results
@@ -34,18 +45,17 @@ def query(db, query_group, country):
 def get_country(data):
     return data[1]
 
-<<<<<<< HEAD
-=======
+
 def parse_team(query_result):
-	'''
-	this function jsonifies team query results
-	'''
-	result_list = []
-	for element in query_result:
-		result_list.append({'team_name': element.name, 'id': element.id})
-	# print({'all_teams':result_list})
-	return json.dumps({'all_teams':result_list})
->>>>>>> 599c8554261fe825448c4d3b82b855be590a9828
+    """
+    this function jsonifies team query results
+    """
+    result_list = []
+    for element in query_result:
+        result_list.append({'team_name': element.name, 'id': element.id})
+    # print({'all_teams':result_list})
+    return json.dumps({'all_teams': result_list})
+
 
 def cluster_user_data(input_data, emotional_col_start=4, emotional_col_end=9, n_clusters=3):
     """
