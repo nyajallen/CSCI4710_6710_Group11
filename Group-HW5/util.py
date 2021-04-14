@@ -25,6 +25,16 @@ def query(db, query_group, country):
 def get_country(data):
     return data[1]
 
+def parse_team(query_result):
+	'''
+	this function jsonifies team query results
+	'''
+	result_list = []
+	for element in query_result:
+		result_list.append({'team_name': element.name, 'id': element.id})
+	# print({'all_teams':result_list})
+	return json.dumps({'all_teams':result_list})
+
 def cluster_user_data(input_data, emotional_col_start=4, emotional_col_end=9, n_clusters=3):
     """
     This function cluster user data based on KMeans algorithm
