@@ -20,10 +20,20 @@ def query(db, query_group, country):
     cursor.close()
     connection.close()
 
+    if len(query_results) >= 10:
+        labels = cluster_user_data(query_results)
+        query_results = split_user_data(query_results, labels)
+
+    query_results = {
+        'group %s' % query_group: query_results
+    }
+
     return query_results
+
 
 def get_country(data):
     return data[1]
+
 
 def cluster_user_data(input_data, emotional_col_start=4, emotional_col_end=9, n_clusters=3):
     """
