@@ -34,6 +34,18 @@ def query(db, query_group, country):
 def get_country(data):
     return data[1]
 
+<<<<<<< HEAD
+=======
+def parse_team(query_result):
+	'''
+	this function jsonifies team query results
+	'''
+	result_list = []
+	for element in query_result:
+		result_list.append({'team_name': element.name, 'id': element.id})
+	# print({'all_teams':result_list})
+	return json.dumps({'all_teams':result_list})
+>>>>>>> 599c8554261fe825448c4d3b82b855be590a9828
 
 def cluster_user_data(input_data, emotional_col_start=4, emotional_col_end=9, n_clusters=3):
     """
