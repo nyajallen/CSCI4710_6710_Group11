@@ -9,6 +9,23 @@ import util
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
+
+SURVEY_DATA_COUNTRY = ['China', 'United States of America', 'United Kingdom','Canada','Romania', 'Switzerland', 'Rwanda', 'Hong Kong', 'France', 'Cyprus',\
+                       'Israel', 'Portugal', 'Ireland I', 'Germany', 'Australia', 'New Zealand', 'Palestine']
+
+@app.route('/api/query_survey_results/<countries>', methods=['GET'])
+def query_survey_results(countries=''):
+	if country_name in SURVEY_DATA_COUNTRY:
+    survey_query_data = {
+			'user_data':[		
+			]
+		}
+  else:
+		survey_query_data = {'user_data':[country_name+" does not have any survey data"]}
+		
+	return json.dumps(survey_query_data) 
+    
+    
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///WebAppsDatabase.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -89,6 +106,10 @@ def index():
         data4uk_html=user_data[53], data4romania1_html=user_data[54][0], data4romania2_html=user_data[54][1], data4romania3_html=user_data[54][2],
         data4switz_html=user_data[55], data4portugal_html=user_data[61], data4germany_html= user_data[63], data4australia_html=user_data[64])
     
+
+    @app.route('/')
+def index():
+    return render_template('map.html')
 
 if __name__ == '__main__':
     # set debug mode
