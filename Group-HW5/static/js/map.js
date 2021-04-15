@@ -51,6 +51,9 @@ $(document).ready(function (){
             },
             NZL: {
                 fillKey: 'WITH_SURVEY_DATA'
+            },
+            ESP: {
+                fillKey: 'WITH_SURVEY_DATA'
             }
         },
         done: function (datamap) {
