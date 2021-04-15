@@ -14,6 +14,7 @@
     </head>
 
     <body>
+<<<<<<< HEAD
         <div id="container" style="position: relative; width: 1500px; height: 1000px;"></div>
         <div id="query_vis">
             <p id="result_p"></p>
@@ -138,5 +139,68 @@
                 </div>
             </div>
         </div>
+=======
+        <div id="container" style="position: relative; width: 900px; height: 600px;"></div>
+        <script>
+            var map = new Datamap({
+                element: document.getElementById('container'),
+                fills: {
+                    WITH_SURVEY_DATA: '#43a4ff',
+                    defaultFill: 'green'
+                },
+                data: {
+                    // all other country code is at: https://gist.github.com/rendon/fc9d5b02a724979e878e
+                    CHN: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    USA: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    GBR: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    CAN: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    ROU: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    CHE: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    RWA: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    FRA: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    CYP: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    ISR: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    PRT: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    IRL: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    DEU: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    AUS: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    },
+                    NZL: {
+                        fillKey: 'WITH_SURVEY_DATA'
+                    }
+                }
+            });
+
+            // Draw a legend for this map
+            map.legend();
+        </script>
+>>>>>>> 28711b03b121b7351a2888ebf490202bf6fe6e98
     </body>
 </html>
