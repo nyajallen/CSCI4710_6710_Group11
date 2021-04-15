@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div id="container" style="position: relative; width: 900px; height: 600px;"></div>
+<div id="container" style="position: relative; width: 1500px; height: 1000px;"></div>
 <div id="query_vis">
     <p id="result_p"></p>
 </div>
@@ -26,8 +26,28 @@
                         // jQuery hide function to hide an html element
                         // you can use show function to show a hide element
                         $("#container").hide();
-                        console.log(status);
-                        // $("#result_p").text(JSON.parse(data)['user_data']);
+                        var w = 1500;
+                        var h = 1000;
+
+                        var dataset = {
+                            nodes: [],
+                            edges: []
+                        }
+                        for(let j = 1; j <=4; j++){
+                            if(typeof(data["group" + j].query_results) == "array") {
+
+                            }
+                            else {
+                                dataset.nodes.push({name: "Rule1", description: data.group1.group_desc})
+                                for(let i = 0; i < data.group1.query_results.length; i++){
+                                    dataset.nodes.push({name: 'User ${i}', description: data.group1.query_results[i] })
+                                }
+                            }
+                        }
+
+
+
+
 
                     });
                 });

@@ -1,38 +1,142 @@
 <!-- This example is based on https://github.com/markmarkoh/datamaps -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
         <script src="https://datamaps.github.io/scripts/datamaps.world.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="../static/js/map.js"></script>
+        <title>Map</title>
     </head>
 
     <body>
-        <div id="container" style="position: relative; width: 900px; height: 600px;"></div>
-        <script>
-            var map = new Datamap({
-                element: document.getElementById('container'),
-                fills: {
-                    WITH_SURVEY_DATA: '#43a4ff',
-                    defaultFill: 'green'
-                },
-                data: {
-                    // all other country code is at: https://gist.github.com/rendon/fc9d5b02a724979e878e
-                    CHN: {
-                        fillKey: 'WITH_SURVEY_DATA'
-                    },
-                    USA: {
-                        fillKey: 'WITH_SURVEY_DATA'
-                    },
-                    GBR: {
-                        fillKey: 'WITH_SURVEY_DATA'
-                    }
-                }
-            });
-
-            // Draw a legend for this map
-            map.legend();
-        </script>
+        <div id="container" style="position: relative; width: 1500px; height: 1000px;"></div>
+        <div id="query_vis">
+            <p id="result_p"></p>
+        </div>
+        <div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div style="text-align: center">
+                            <h1 class="modal-title" style="display: inline">User </h1>
+                            <h1 class="modal-title" id="exampleModalLongTitle" style="display: inline"></h1>
+                            <h1 class="modal-title" style="display: inline"> Information</h1>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>Country: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_country"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>Age: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_age"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>Gender: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_gender"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>Rate of Fear: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_fear"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>Rate of Anxiousness: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_anxious"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>Rate of Anger: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_angry"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>Rate of Happiness: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_happy"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>Rate of Sadness: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_sad"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>The strongest emotion they felt was: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_emotion"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>What made you feel this?: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_explain"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>What brings them the most meaning during outbreak: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_meaning"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mr-auto">
+                                    <h5>Occupation: </h5>
+                                </div>
+                                <div class="col-md-6 mr-auto">
+                                    <p id="modal_occupation"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- open renter page -->
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

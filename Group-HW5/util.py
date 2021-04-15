@@ -35,11 +35,12 @@ def query(db, query_group, country):
 
     group_desc = description.get(query_group, "Null")
 
-    query_results = {
-        'group %s' % query_group: {group_desc, query_results}
+    survey_query_results = {
+        'group %s' % query_group: {'group_desc': group_desc,
+                                   'query_results': query_results}
     }
 
-    return query_results
+    return survey_query_results
 
 
 def get_country(data):

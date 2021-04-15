@@ -3,12 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="12607df0-85a3-4431-8a3d-ba73ecedf4d4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ontology_graph.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ontology_graph.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -34,6 +44,19 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager" selected="Flask server.Group-HW5">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Group-HW5" type="PythonConfigurationType" factoryName="Python">
       <module name="Group-HW5" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -82,7 +105,8 @@
       <updated>1618359327769</updated>
       <workItem from="1618359330048" duration="2644000" />
       <workItem from="1618362264242" duration="5643000" />
-      <workItem from="1618412474573" duration="2538000" />
+      <workItem from="1618412474573" duration="12542000" />
+      <workItem from="1618502058446" duration="9430000" />
     </task>
     <servers />
   </component>
