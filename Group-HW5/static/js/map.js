@@ -15,6 +15,42 @@ $(document).ready(function (){
             },
             GBR: {
                 fillKey: 'WITH_SURVEY_DATA'
+            },
+            CAN: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            ROU: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            CHE: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            RWA: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            FRA: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            CYP: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            ISR: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            PRT: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            IRL: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            DEU: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            AUS: {
+                fillKey: 'WITH_SURVEY_DATA'
+            },
+            NZL: {
+                fillKey: 'WITH_SURVEY_DATA'
             }
         },
         done: function (datamap) {
