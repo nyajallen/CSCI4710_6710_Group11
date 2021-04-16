@@ -64,15 +64,15 @@ $(document).ready(function (){
                     if (status == 'success') {
                         $("#container").hide();
                         console.log(status);
-                        console.log(JSON.parse(data)['group1'].group_desc);
+                        var checkData = JSON.parse(data);
 
-                        if(data.hasOwnProperty('user_data')){
-                            console.log(data.hasOwnProperty('user_data'));
-                            $('#result_p').text(JSON.parse(data)['user_data']);
+                        if(checkData.hasOwnProperty('user_data')){
+                            console.log(checkData.hasOwnProperty('user_data'));
+                            $('#result_p').text(checkData.user_data);
                         }
                         else {
-                            const w = 3500;
-                            const h = 3000;
+                            const w = 2500;
+                            const h = 2000;
 
                             let dataset = {
                                 nodes: [],
