@@ -11,9 +11,49 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <script src="../static/js/map.js"></script>
         <title>Map</title>
+        <style>
+            ul {
+              list-style-type: none;
+              margin: 0;
+              padding: 0;
+              overflow: hidden;
+              background-color: #333;
+              position: fixed;
+              top: 0;
+              width: 100%;
+            }
+            
+            li {
+              float: left;
+            }
+            
+            li a {
+              display: block;
+              color: white;
+              text-align: center;
+              padding: 14px 16px;
+              text-decoration: none;
+            }
+            
+            li a:hover:not(.active) {
+              background-color: #111;
+            }
+            
+            .active {
+              background-color: #4CAF50;
+            }
+
+        </style>
     </head>
 
     <body>
+        <ul>
+            <li><a class="active" href="intro.html">Intro</a></li>
+            <li><a href="index.html">Demographics</a></li>
+            <li><a href="map.html">Map</a></li>
+            <li><a href="ontology_graph.html">Graph</a></li>
+          </ul>
+<br><br><br>
         <div id="container" style="position: relative; width: 1500px; height: 1000px;"></div>
         <div id="query_vis">
             <p id="result_p"></p>
