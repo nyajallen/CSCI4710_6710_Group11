@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="12607df0-85a3-4431-8a3d-ba73ecedf4d4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/map.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,19 +43,6 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager" selected="Flask server.Group-HW5">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Group-HW5" type="PythonConfigurationType" factoryName="Python">
       <module name="Group-HW5" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -103,7 +92,9 @@
       <workItem from="1618359330048" duration="2644000" />
       <workItem from="1618362264242" duration="5643000" />
       <workItem from="1618412474573" duration="12542000" />
-      <workItem from="1618502058446" duration="12315000" />
+      <workItem from="1618502058446" duration="14018000" />
+      <workItem from="1618531418896" duration="828000" />
+      <workItem from="1618532251379" duration="1527000" />
     </task>
     <servers />
   </component>
