@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block extrajs %}
+<script src="../static/js/addItem.js"></script>
+{% endblock %}
+
+{% block title %}Add an Item{% endblock %}
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,23 +40,8 @@
 
     </style>
 </head>
-<body>
-
-<nav class="navbar navbar-dark bg-primary">
-    <!-- .container-fluid class provides a full width container, spanning the entire width of the viewport -->
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" style="color: white" href="#">Rent-An-Item</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="#">Rent an Item</a></li>
-            <li><a class="active" href="AddItem.html">Add an Item</a></li>
-        </ul>
-        <ul class="nav navbar-right">
-            <li><a href="#">Account</a></li>
-        </ul>
-    </div>
-</nav>
+<body> -->
+{% block content %}
 
 <h1 style="padding: 10px">Add an Item to Rent</h1>
 
@@ -170,6 +161,6 @@
         </div>
     </div>
 </div>
-
-</body>
-</html>
+{% endblock %}
+<!-- </body>
+</html> -->
