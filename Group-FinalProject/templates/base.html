@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{%block head%}
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    	{% block extrajs %}{% endblock %}
+    	<title>{% block title %}{% endblock %}</title>
+    	{% endblock %}
+	</head>
+	<body>
+		<nav class="navbar navbar-dark bg-primary">
+    		<!-- .container-fluid class provides a full width container, spanning the entire width of the viewport -->
+    		<div class="container-fluid">
+        		<div class="navbar-header">
+            		<a class="navbar-brand" style="color: white" href="#">Rent-An-Item</a>
+        		</div>
+        		<ul class="nav navbar-nav">
+            		<li><a class="active" style="color: white" href="/">Rent an Item</a></li>
+            		<li><a href="/addItem" style="color: white">Add an Item</a></li>
+        		</ul>
+        		<ul class="nav navbar-nav navbar-right">
+        			<li><a href="/login" style="color: white">Log In</a></li>
+        			<li><a href="/signup" style="color: white">Sign Up</a></li>
+            		<li><a href="#" style="color: white">Account</a></li>
+            		<li><a href="/checkout" src="https://img.icons8.com/ios/26/000000/shopping-cart.png"></a></li>
+        		</ul>
+    		</div>
+		</nav>
+    	<div id="content">{% block content %}{% endblock %}</div>
+
+	</body>
+
+</html>

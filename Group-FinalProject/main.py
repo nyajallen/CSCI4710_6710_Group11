@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, json
 from flask_sqlalchemy import SQLAlchemy
 
 import util
@@ -47,3 +47,39 @@ class RentedItems(db.Model):
     ownerId = db.Column(db.Integer, db.ForeignKey('available_items.ownerId'), nullable=False)
     dateRented = db.Column(db.String(50), nullable=False)
     dueDate = db.Column(db.String(50))
+
+@app.route('/')
+def index():
+    log= 'Index.'
+    return render_template('AddItem.html', log_index = log)
+
+@app.route('/login')
+def login():
+    log='background.'
+    return render_template('login.html', log_index = log)
+
+@app.route('/signup')
+def signup():
+    log='signup.'
+    return render_template('signup.html', log_index=log)
+
+@app.route('/readmore')
+def readmore():
+    log='readmore/<item>.'
+    return render_template('readmore.html', log_index=log)
+
+@app.route('/checkout')
+def checkout():
+    log='checkout/<userID>.'
+    return render_template('checkout.html', log_index=log)
+
+@app.route('/addItem')
+def addItem():
+    log='addItem/<userID>.'
+    return render_template('AddItem.html', log_index=log)
+
+if __name__ == '__main__':
+    app.debug = True
+    ip = '127.0.0.1'
+    app.run(host=ip)
+
