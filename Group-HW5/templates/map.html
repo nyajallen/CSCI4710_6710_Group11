@@ -1,26 +1,13 @@
-<!-- This example is based on https://github.com/markmarkoh/datamaps -->
 {% extends "base.html" %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-        <script src="https://datamaps.github.io/scripts/datamaps.world.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <script src="../static/js/map.js"></script>
-        <title>Map</title>
-        <style>
+{% block extrajs %}
+<script src="../static/js/map.js"></script>
+{% endblock %}
 
-        </style>
-    </head>
+{% block title %}Map{% endblock %}
 
-    <body>
-      
-<br><br><br>
-        <div id="container" style="position: relative; width: 1500px; height: 1000px;"></div>
+{% block content %}
+
+<div id="container" style="position: relative; width: 1500px; height: 1000px;"></div>
         <div id="query_vis">
             <p id="result_p"></p>
         </div>
@@ -144,5 +131,4 @@
                 </div>
             </div>
         </div>
-    </body>
-</html>
+{% endblock %}

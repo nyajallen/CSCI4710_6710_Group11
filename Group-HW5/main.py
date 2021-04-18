@@ -45,7 +45,7 @@ def query_survey_results(country_name=''):
         survey_query_data = {}
         for x in group:
             query_result = util.query('WebAppsDatabase.db', x, country_name)
-            split_result = util.split_and_desc(query_result)
+            split_result = util.split_and_desc(query_result, x, country_name)
             survey_query_data.update(split_result)
     else:
         survey_query_data = {'user_data': [country_name + " does not have any survey data"]}
@@ -53,7 +53,7 @@ def query_survey_results(country_name=''):
     return json.dumps(survey_query_data)
 
 
-@app.route('/api/query_tables', methods=['GET'])
+@app.route('/query_tables')
 def query_tables():
     # list of group numbers
     groups = [1, 2, 3, 4]
@@ -113,6 +113,10 @@ def query_tables():
 @app.route('/')
 def index():
     return render_template('intro.html')
+
+@app.route('/map')
+def map():
+    return render_template('map.html')
 
 
 if __name__ == '__main__':

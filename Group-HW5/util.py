@@ -25,7 +25,7 @@ def query(db, query_group, country):
     return query_results
 
 
-def split_and_desc(query_results):
+def split_and_desc(query_results, query_group, country):
     if len(query_results) >= 10:
         labels = cluster_user_data(query_results)
         query_results = split_user_data(query_results, labels)

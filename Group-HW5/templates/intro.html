@@ -1,32 +1,36 @@
 {% extends "base.html" %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            body 
-            {
-                margin:0;
-                background-color: aliceblue;
-                text-align: center;
-            }
-            div
-            {
-                margin: 100px;
-            }
+{% block extrajs %}
+<script src="../static/js/map.js"></script>
+{% endblock %}
 
-            h1
-            {
-                padding-top: 100px;
-            }
+{% block title %}Map{% endblock %}
+
+{% block style %}
+<style>
+    body 
+    {
+        margin:0;
+        background-color: aliceblue;
+        text-align: center;
+    }
+    .intro
+    {
+        margin: 100px;
+    }
+
+    h1
+    {
+        padding-top: 100px;
+    }
             
-            </style>
-            </head>
-    <body>
+</style>
+{% endblock %}
 
-        <br>
+{% block content %}
+<br>
         <h1>Introduction</h1>
 
-        <div>
+        <div id="intro">
             This past year has been a whirlwind of uncertainty. <br>
             Many of us made to be stuck in our homes with little information on the world outside our doors. <br>
             There are many people out there who may share the same outlook as you on the entire situation, but you may not know it. <br>
@@ -35,7 +39,4 @@
             of people living in the same situation as you.<br>
 
         </div>
-
-    </body>
-    
-</html>
+{% endblock %}
