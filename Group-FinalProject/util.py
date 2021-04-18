@@ -1,12 +1,11 @@
 import json
-
-from numpy as np
+import numpy as np
 import sqlite
 
 def get_an_item(db, itemId):
 	query = "SELECT * FROM Available_Items WHERE item_id = %d" % itemId
 
-	connection = sqlite3.connect(db)
+    connection = sqlite3.connect(db)
     cursor = connection.cursor()
     cursor.execute(query)
     query_results = cursor.fetchall()
@@ -71,7 +70,7 @@ def insert_an_item(db, isRented, owner_id=0, category, price, description="", ph
     cursor.close()
     connection.close()
 
-def get_user_items(db, username):
+def get_user_items(db, username): 
 
 	ownerID_query = "SELECT owner_id FROM Users WHERE username= '%s'" % username
 

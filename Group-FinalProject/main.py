@@ -50,33 +50,32 @@ class RentedItems(db.Model):
 
 @app.route('/')
 def index():
-    log= 'Index.'
-    return render_template('AddItem.html', log_index = log)
+    return render_template('AddItem.html')
 
 @app.route('/login')
 def login():
-    log='background.'
-    return render_template('login.html', log_index = log)
+    return render_template('login.html')
 
 @app.route('/signup')
 def signup():
-    log='signup.'
-    return render_template('signup.html', log_index=log)
+    return render_template('signup.html')
 
 @app.route('/readmore')
 def readmore():
-    log='readmore/<item>.'
-    return render_template('readmore.html', log_index=log)
+    return render_template('readmore.html')
 
 @app.route('/checkout')
 def checkout():
-    log='checkout/<userID>.'
-    return render_template('checkout.html', log_index=log)
+    return render_template('checkout.html')
 
 @app.route('/addItem')
 def addItem():
-    log='addItem/<userID>.'
-    return render_template('AddItem.html', log_index=log)
+    return render_template('AddItem.html')
+
+@app.route('/api/saveItem', methods=['POST'])
+def saveNewItem():
+    input_values = request.form
+    print(input_values)
 
 if __name__ == '__main__':
     app.debug = True

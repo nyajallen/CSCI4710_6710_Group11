@@ -4,11 +4,14 @@ const loadFile = function (event) {
 };
 
 function submit_handler() {
-    let x = 1;
-    if(x === 1) {
-        $('#itemModal').modal('show');
-        event.preventDefault();
-    }
+
+	$.post("/api/saveItem", function(status) {
+
+		if(status == 'success'){
+			$('#itemModal').modal('show');
+        	event.preventDefault();
+		}
+	}
 }
 
 function loadRenterPage() {
