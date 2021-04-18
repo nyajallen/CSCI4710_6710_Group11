@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, jsonify, json
+from flask import Flask, render_template, jsonify, json, request
 from flask_sqlalchemy import SQLAlchemy
 
 import util
@@ -48,37 +48,44 @@ class RentedItems(db.Model):
     dateRented = db.Column(db.String(50), nullable=False)
     dueDate = db.Column(db.String(50))
 
+
 @app.route('/')
 def index():
     return render_template('AddItem.html')
+
 
 @app.route('/login')
 def login():
     return render_template('login.html')
 
+
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
 
 @app.route('/readmore')
 def readmore():
     return render_template('readmore.html')
 
+
 @app.route('/checkout')
 def checkout():
     return render_template('checkout.html')
 
+
 @app.route('/addItem')
-def addItem():
+def add_item():
     return render_template('AddItem.html')
 
+
 @app.route('/api/saveItem', methods=['POST'])
-def saveNewItem():
+def save_new_item():
     input_values = request.form
     print(input_values)
+
 
 if __name__ == '__main__':
     app.debug = True
     ip = '127.0.0.1'
     app.run(host=ip)
-
