@@ -1,7 +1,4 @@
 {% extends "base.html" %}
-{% block extrajs %}
-<script src="../static/js/addItem.js"></script>
-{% endblock %}
 
 {% block title %}Add an Item{% endblock %}
 
@@ -10,12 +7,12 @@
 <h1 style="padding: 10px">Add an Item to Rent</h1>
 
 <div>
-    <form onsubmit="submit_handler()">
+    <form action="/api/saveItem" method="post">
         <div class="form-group col-md-6" id="form">
                 <label for="item_name">What is this Item? *</label>
-                <input type="text" class="form-control" id="item_name" placeholder="Ex: Blender, Drill" style="margin-bottom: 20px;" required>
+                <input type="text" class="form-control" name="item_name" placeholder="Ex: Blender, Drill" style="margin-bottom: 20px;" required>
                 <label for="category">What do you use this item for? *</label>
-                <select class="form-control" id="category" style="margin-bottom: 20px;" required>
+                <select class="form-control" name="category" style="margin-bottom: 20px;" required>
                     <option value="0">Select a Category</option>
                     <option value='1'>Yard Tools</option>
                     <option value='2'>Household Items</option>
@@ -32,16 +29,16 @@
                 </select>
             <div style="vertical-align: top; margin-bottom: 20px;">
                 <label for="price">How much are renting this item for? *</label>
-                <input type="number" step="any" id="price" placeholder="Ex: 0.00" required>
+                <input type="number" step="any" name="price" placeholder="Ex: 0.00" required>
                 <label for="per">per</label>
-                <input type="text" step="any" id="per" placeholder="Ex: hour, day">
+                <input type="text" step="any" name="per" placeholder="Ex: hour, day">
             </div>
             <label for="description">Description of Item</label>
-            <textarea class="form-control" rows="5" id="description" style="margin-bottom: 20px"></textarea>
+            <textarea class="form-control" rows="5" name="description" style="margin-bottom: 20px"></textarea>
             <label for="date_added">How Long is this Item Available? *<br>From:</label>
-            <input type="date" class="form-control" id="date_added" required>
+            <input type="date" class="form-control" name="date_added" required>
             <label for="due_date">To:</label>
-            <input type="date" class="form-control" id="due_date">
+            <input type="date" class="form-control" name="due_date">
             <input type="checkbox" id="indefinitely" style="margin-bottom: 20px">
             <label for="indefinitely">Indefinitely</label>
             <p><label for="photo">Add a photo</label></p>
@@ -51,78 +48,11 @@
         </div>
     </form>
 </div>
+<script>
+    const loadFile = function (event) {
+    const image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
 
-<div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <!-- This means this is a bootstrap modal -->
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="col-md-9" style="text-align: right">
-                    <h1 class="modal-title" id="exampleModalLongTitle">Your Item is Listed!</h1>
-                </div>
-                <div class="col-md-3">
-                    <img src="images/checkmark.gif" alt="checkmark" height="50" width="50">
-                </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <!-- ARIA (Accessible Rich Internet Applications) defines a way to make Web content and Web applications more accessible to people with disabilities. -->
-                    <!-- The aria-hidden property tells screen-readers if they should ignore the element. -->
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row" style="text-align: center">
-                        <img id="modal_photo" width="200" src="" alt="Item Photo"/>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mr-auto">
-                            <h5>Item Name: </h5>
-                        </div>
-                        <div class="col-md-6 mr-auto">
-                            <p id="modal_name"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mr-auto">
-                            <h5>Category: </h5>
-                        </div>
-                        <div class="col-md-6 mr-auto">
-                            <p id="modal_category"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mr-auto">
-                            <h5>Price: </h5>
-                        </div>
-                        <div class="col-md-6 mr-auto">
-                            <p id="modal_price"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mr-auto">
-                            <h5>Description: </h5>
-                        </div>
-                        <div class="col-md-6 mr-auto">
-                            <p id="modal_description"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mr-auto">
-                            <h5>Item Availability: </h5>
-                        </div>
-                        <div class="col-md-6 mr-auto">
-                            <p id="modal_availability"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <!-- open renter page -->
-                <button type="button" class="btn btn-secondary" onclick="loadRenterPage()">Close</button>
-                <!-- open item listing page -->
-                <button type="button" class="btn btn-primary" onclick="loadItemPage()">View Item Listing</button>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock %}

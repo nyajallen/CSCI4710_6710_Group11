@@ -2,6 +2,7 @@ import os
 
 from flask import Flask, render_template, jsonify, json, request
 from flask_sqlalchemy import SQLAlchemy
+from http import HTTPStatus
 
 import util
 
@@ -12,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///RentAnItemDb.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-
+ownerId = 0
 
 class Users(db.Model):
     __tablename__ = 'users'
@@ -51,7 +52,7 @@ class RentedItems(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('AddItem.html')
+    return render_template('index.html')
 
 
 @app.route('/login')
@@ -66,7 +67,7 @@ def signup():
 
 @app.route('/readmore')
 def readmore():
-    return render_template('readmore.html')
+    return render_template('read_more.html')
 
 
 @app.route('/checkout')
@@ -81,8 +82,17 @@ def add_item():
 
 @app.route('/api/saveItem', methods=['POST'])
 def save_new_item():
-    input_values = request.form
-    print(input_values)
+    item_name = request.form['item_name']
+    category = request.form['category']
+    price = request.form['price'] + '/' + request.form['per']
+    description = request.form['description']
+    date_added = request.form['date_added']
+    due_date = request.form['due_date']
+    photo_url = request.form['image']
+
+    util.insert_an_item('RentAnItemDb.db', False, item_name, category, price, ownerId, description, photo_url, date_added, due_date)
+
+    return render_template('read_more.html')
 
 
 if __name__ == '__main__':

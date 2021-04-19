@@ -57,17 +57,24 @@ def insert_a_user(db, email, password, first_name="", last_name="", username="",
     connection.close()
 
 
-def insert_an_item(db, is_rented, category, price, owner_id=0, description="", photo_url="", date_added="",
+def insert_an_item(db, is_rented, item_name, category, price, owner_id=0, description="", photo_url="", date_added="",
                    date_removed=""):
     if is_rented:
-        query = "INSERT INTO rented_items (owner_id, date_rented, due_date) VALUES (?, ?, ?)"
-        data_tuple = (owner_id, date_added, date_removed)
-    else:
-        query = "INSERT INTO Available_Items (owner_id, category, price, description, photo_url, date_added, date_removed) " \
-                "VALUES (?, ?, ?, ?, ?, ?, ?)"
+        itemid = "SELECT item_id FROM Available_Items WHERE item_name ='%s' AND owner_id = %d" % (item_name, owner_id)
+        connection = sqlite3.connect(db)
+        cursor = connection.cursor()
+        cursor.execute(item_id)
+        itemid = cursor.fetchall()
 
-        photo_url = convert_to_binary(photo_url)
-        data_tuple = (owner_id, category, price, description, photo_url, date_added, date_removed)
+        query = "INSERT INTO rented_items (item_id, owner_id, date_rented, due_date) VALUES (?, ?, ?, ?)"
+        data_tuple = (itemid, owner_id, date_added, date_removed)
+    else:
+        query = "INSERT INTO Available_Items (owner_id, item_name, category, price, description, photo_uri, date_added, date_removed) " \
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+
+        if photo_url != "":
+            photo_url = convert_to_binary(photo_url)
+        data_tuple = (owner_id, item_name, category, price, description, photo_url, date_added, date_removed)
 
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
