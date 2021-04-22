@@ -57,11 +57,12 @@ def index():
 
 @app.route('/login', methods =['GET'])
 def login():
-       username = request.form['username']
-       password = request.form['password']
+  username = request.form['username']
+  password = request.form['password']
         
-  util.get_a_user('RentAnItemDb.db', username)
-    return render_template('login.html')
+  util.get_a_user('RentAnItemDb.db', username, password)
+
+  return render_template('login.html')
 
 
 @app.route('/signup')
