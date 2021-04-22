@@ -62,6 +62,12 @@ def login():
 
 @app.route('/signup')
 def signup():
+    first_name = request.form['first_name]
+    last_name = request.form['last_name']
+    username = request.form['username']
+    password = request.form['password']
+    
+    util.insert_a_user('RentAnTiemDb.db', first_name, last_name, username, password)
     return render_template('signup.html')
 
 
