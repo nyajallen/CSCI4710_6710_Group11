@@ -55,13 +55,8 @@ def index():
     return render_template('AddItem.html')
 
 
-@app.route('/login', methods =['GET'])
+@app.route('/login')
 def login():
-  username = request.form['username']
-  password = request.form['password']
-        
-  util.get_a_user('RentAnItemDb.db', username, password)
-
   return render_template('login.html')
 
 
@@ -107,11 +102,21 @@ def save_new_item():
 def add_new_user():
     first_name = request.form['first_name']
     last_name = request.form['last_name']
+    email = request.form['email']
     username = request.form['username']
     password = request.form['password']
     
-    util.insert_a_user('RentAnItemDb.db', first_name, last_name, username, password)
-    return render_template('account.html')
+    util.insert_a_user('RentAnItemDb.db', email, password, first_name, last_name, username)
+    return render_template('account.html', firstname= first_name, lastname= last_name, email= email)
+
+@app.route('/api/login', methods=['POST'])
+def login_a_user():
+    username = request.form['Uname']
+    password = request.form['Pass']
+
+    userinfo = util.get_a_user('RentAnItemDb.db', username, password)
+    print(userinfo[0][1])
+    return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3])
 
 
 if __name__ == '__main__':
