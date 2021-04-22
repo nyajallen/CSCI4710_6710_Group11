@@ -55,8 +55,20 @@ def index():
     return render_template('AddItem.html')
 
 
-@app.route('/login')
+@app.route('/login', methods =['GET', 'POST'])
 def login():
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+       username = request.form['username']
+       password = request.form['password']
+        
+    connection = sqlite3.connect(db)
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password,))
+    account = cursor.fetchall()
+    if account:
+            session['loggedin'] = True
+            session['id'] = account['id']
+            session['username'] = account['username']
     return render_template('login.html')
 
 
