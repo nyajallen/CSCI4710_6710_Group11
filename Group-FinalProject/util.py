@@ -29,8 +29,8 @@ def get_all_items(db):
     return query_results
 
 
-def get_a_user(db, username):
-    query = "SELECT * FROM Users WHERE username = '%s'" % username
+def get_a_user(db, username, password):
+    query = "SELECT * FROM Users WHERE username = '%s' AND password = '%s'" (username,password) 
 
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
