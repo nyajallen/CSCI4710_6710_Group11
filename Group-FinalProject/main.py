@@ -52,7 +52,7 @@ class RentedItems(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('AddItem.html')
 
 
 @app.route('/login')
@@ -78,6 +78,10 @@ def checkout():
 @app.route('/addItem')
 def add_item():
     return render_template('AddItem.html')
+
+@app.route('/account')
+def account():
+    return render_template('account.html')
 
 
 @app.route('/api/saveItem', methods=['POST'])

@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Add an Item{% endblock %}
+{% block title %}Sign Up{% endblock %}
 
-{% block content %}
+{% block style %}
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -67,8 +67,9 @@ a {
   text-align: center;
 }
 </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
 
 <form action="account.html">
   <div class="container">
@@ -94,6 +95,4 @@ a {
     <p>Already have an account? <a href="login.html">Login</a>.</p>
   </div>
 </form>
-
-</body>
-</html>
+{% endblock %}

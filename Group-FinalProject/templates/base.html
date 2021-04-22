@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		{%block head%}
+		{% block head %}
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -10,6 +10,7 @@
 
     	{% block extrajs %}{% endblock %}
     	<title>{% block title %}{% endblock %}</title>
+        {% block style %}{% endblock %}
     	{% endblock %}
 	</head>
 	<body>
@@ -27,7 +28,7 @@
         			<li><a href="/login" style="color: white">Log In</a></li>
         			<li><a href="/signup" style="color: white">Sign Up</a></li>
             		<li><a href="/account" style="color: white">Account</a></li>
-            		<li><a href="/checkout" src="https://img.icons8.com/ios/26/000000/shopping-cart.png"></a></li>
+            		<li><a href="/checkout" src="../images/cart-icon.png"></a></li>
         		</ul>
     		</div>
 		</nav>
