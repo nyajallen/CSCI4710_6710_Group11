@@ -71,7 +71,7 @@ a {
 
 {% block content %}
 
-<form action="account.html">
+<form action="/api/signup" method="post">
   <div class="container">
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
@@ -85,6 +85,9 @@ a {
     
     <label for="email"><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+    <label for="last_name"><b>Username</b></label>
+    <input type = "text" placeholder="Enter a Username" name="username" id="username" required>
 
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" id="password" required>

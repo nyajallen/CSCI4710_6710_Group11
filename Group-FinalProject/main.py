@@ -67,12 +67,6 @@ def login():
 
 @app.route('/signup')
 def signup():
-    first_name = request.form['first_name]
-    last_name = request.form['last_name']
-    username = request.form['username']
-    password = request.form['password']
-    
-    util.insert_a_user('RentAnItemDb.db', first_name, last_name, username, password)
     return render_template('signup.html')
 
 
@@ -110,14 +104,14 @@ def save_new_item():
     return render_template('read_more.html')
                               
 @app.route('/api/signup', methods=['POST'])
-def signup():
-    first_name = request.form['first_name]
+def add_new_user():
+    first_name = request.form['first_name']
     last_name = request.form['last_name']
     username = request.form['username']
     password = request.form['password']
     
     util.insert_a_user('RentAnItemDb.db', first_name, last_name, username, password)
-    return render_template('signup.html')
+    return render_template('account.html')
 
 
 if __name__ == '__main__':

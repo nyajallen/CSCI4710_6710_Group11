@@ -44,7 +44,7 @@ def get_a_user(db, username, password):
 
 def insert_a_user(db, email, password, first_name="", last_name="", username="", card=0000000000000000, exp="",
                   cvc=000):
-    query = "INSERT INTO Users (first_name, last_name, email, username, password, card_number, exp_date, cvc)\
+    query = "INSERT INTO Users (first_name, last_name, email, username, password, card_number, expiration_date, cvc)\
 			VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
 
     data_tuple = (first_name, last_name, email, username, password, card, exp, cvc)
