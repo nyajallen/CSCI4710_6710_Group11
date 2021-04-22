@@ -55,20 +55,12 @@ def index():
     return render_template('AddItem.html')
 
 
-@app.route('/login', methods =['GET', 'POST'])
+@app.route('/login', methods =['GET'])
 def login():
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
        username = request.form['username']
        password = request.form['password']
         
-    connection = sqlite3.connect(db)
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username, password,))
-    account = cursor.fetchall()
-    if account:
-            session['loggedin'] = True
-            session['id'] = account['id']
-            session['username'] = account['username']
+  util.get_a_user('RentAnItemDb.db', username)
     return render_template('login.html')
 
 
@@ -79,7 +71,7 @@ def signup():
     username = request.form['username']
     password = request.form['password']
     
-    util.insert_a_user('RentAnTiemDb.db', first_name, last_name, username, password)
+    util.insert_a_user('RentAnItemDb.db', first_name, last_name, username, password)
     return render_template('signup.html')
 
 
