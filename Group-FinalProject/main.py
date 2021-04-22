@@ -103,6 +103,16 @@ def save_new_item():
     util.insert_an_item('RentAnItemDb.db', False, item_name, category, price, ownerId, description, photo_url, date_added, due_date)
 
     return render_template('read_more.html')
+                              
+@app.route('/api/signup', methods=['POST'])
+def signup():
+    first_name = request.form['first_name]
+    last_name = request.form['last_name']
+    username = request.form['username']
+    password = request.form['password']
+    
+    util.insert_a_user('RentAnItemDb.db', first_name, last_name, username, password)
+    return render_template('signup.html')
 
 
 if __name__ == '__main__':
