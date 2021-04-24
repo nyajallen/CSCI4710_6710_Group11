@@ -112,6 +112,19 @@ def get_owner_id(db, username, password):
 
     return query_results
 
+def get_username(db, owner_id):
+    query = "SELECT username FROM Users WHERE ID=%d" % owner_id
+
+    connection = sqlite3.connect(db)
+    cursor = connection.cursor()
+    cursor.execute(query)
+    query_results = cursor.fetchall()
+    cursor.close()
+    connection.close
+
+    return query_results
+
+
 
 def convert_to_binary(filename):
     # Convert digital data to binary format

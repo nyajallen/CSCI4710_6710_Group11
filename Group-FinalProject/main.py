@@ -55,7 +55,23 @@ class RentedItems(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    items = util.get_all_items('RentAnItemDb.db')
+    names=[]
+    prices=[]
+    dates=[]
+    owners=[]
+
+    for item in items:
+        names.append(item[2])
+        prices.append(item[4])
+        dates.append(item[7])
+        name = util.get_username('RentAnItemDb.db', item[1])
+        owners.append(name)
+
+    print(names)
+    print(prices)
+    print(dates)
+    return render_template('index.html', names_list= names, price_list= prices, dates_list=dates, owners_list= owners)
 
 
 @app.route('/login')
@@ -113,8 +129,11 @@ def add_new_user():
     first_name = request.form['first_name']
     last_name = request.form['last_name']
     email = request.form['email']
+    global username 
     username = request.form['username']
+    global password
     password = request.form['password']
+    global ownerId
     ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
     
     util.insert_a_user('RentAnItemDb.db', email, password, first_name, last_name, username)
@@ -122,8 +141,11 @@ def add_new_user():
 
 @app.route('/api/login', methods=['POST'])
 def login_a_user():
+    global username
     username = request.form['Uname']
+    global password
     password = request.form['Pass']
+    global ownerId
     ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
 
     userinfo = util.get_a_user('RentAnItemDb.db', username, password)
