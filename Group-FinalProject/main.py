@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, jsonify, json, request
+from flask import Flask, render_template, jsonify, json, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from http import HTTPStatus
 
@@ -11,9 +11,12 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///RentAnItemDb.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = 'for cookies'
 
 db = SQLAlchemy(app)
 ownerId = 0
+username=''
+password=''
 
 class Users(db.Model):
     __tablename__ = 'users'
@@ -81,6 +84,13 @@ def add_item():
 
 @app.route('/account')
 def account():
+    if ownerId == 0:
+        flash('You are not signed in')
+    else:
+        userinfo = util.get_a_user('RentAnItemDb.db', username, password)
+        print(userinfo[0][1])
+        return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3], username= username)
+
     return render_template('account.html')
 
 
@@ -105,18 +115,20 @@ def add_new_user():
     email = request.form['email']
     username = request.form['username']
     password = request.form['password']
+    ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
     
     util.insert_a_user('RentAnItemDb.db', email, password, first_name, last_name, username)
-    return render_template('account.html', firstname= first_name, lastname= last_name, email= email)
+    return render_template('account.html', firstname= first_name, lastname= last_name, email= email, username=username)
 
 @app.route('/api/login', methods=['POST'])
 def login_a_user():
     username = request.form['Uname']
     password = request.form['Pass']
+    ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
 
     userinfo = util.get_a_user('RentAnItemDb.db', username, password)
     print(userinfo[0][1])
-    return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3])
+    return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3], username= username)
 
 
 if __name__ == '__main__':
