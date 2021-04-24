@@ -85,7 +85,7 @@ def insert_an_item(db, is_rented, item_name, category, price, owner_id=0, descri
 
 
 def get_user_items(db, username):
-    owner_id_query = "SELECT owner_id FROM Users WHERE username= '%s'" % username
+    owner_id_query = "SELECT ID FROM Users WHERE username= '%s'" % username
 
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
@@ -101,7 +101,7 @@ def get_user_items(db, username):
     return query_results
 
 def get_owner_id(db, username, password):
-    query = "SELECT owner_id FROM Users WHERE username='%s' AND password='%s'" % (username, password)
+    query = "SELECT ID FROM Users WHERE username='%s' AND password='%s'" % (username, password)
 
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
