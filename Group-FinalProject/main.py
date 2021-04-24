@@ -55,7 +55,7 @@ class RentedItems(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('AddItem.html')
+    return render_template('index.html')
 
 
 @app.route('/login')
