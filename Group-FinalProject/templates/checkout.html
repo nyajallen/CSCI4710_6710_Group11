@@ -1,9 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "base.html" %}
+
+{% block extrajs %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="../static/css/rent.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block style %}
 <style>
 body {
   font-family: Arial;
@@ -109,6 +113,8 @@ span.price {
   }
 }
 </style>
+{% endblock %}
+
 </head>
 <body>
 
@@ -140,6 +146,7 @@ span.price {
     </div>
   </nav>
   <!--Page Start-->
+{% block content %}   
 <div class="row">
   <div class="col-75">
     <div class="container heart">
@@ -217,5 +224,4 @@ span.price {
   </div>
 </div>
 
-</body>
-</html>
+{% endblock %}
