@@ -63,6 +63,7 @@ def index():
     for item in items:
         addname = list(item)
         name= util.get_username('RentAnItemDb.db', item[1])
+        print(name)
         addname.append(name)
         items_with_owners.append(addname)
 
@@ -116,9 +117,8 @@ def save_new_item():
     description = request.form['description']
     date_added = request.form['date_added']
     due_date = request.form['due_date']
-    photo_url = request.form['image']
 
-    util.insert_an_item('RentAnItemDb.db', False, item_name, category, price, ownerId, description, photo_url, date_added, due_date)
+    util.insert_an_item('RentAnItemDb.db', False, item_name, category, price, ownerId, description, date_added, due_date)
 
     return render_template('read_more.html')
                               
@@ -133,6 +133,8 @@ def add_new_user():
     password = request.form['password']
     global ownerId
     ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
+    ownerId = ownerId[0][0]
+
     
     util.insert_a_user('RentAnItemDb.db', email, password, first_name, last_name, username)
     return render_template('account.html', firstname= first_name, lastname= last_name, email= email, username=username)
@@ -145,6 +147,8 @@ def login_a_user():
     password = request.form['Pass']
     global ownerId
     ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
+    ownerId = ownerId[0][0]
+    print(ownerId)
 
     userinfo = util.get_a_user('RentAnItemDb.db', username, password)
     print(userinfo[0][1])

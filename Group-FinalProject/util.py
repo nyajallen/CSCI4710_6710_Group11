@@ -57,7 +57,7 @@ def insert_a_user(db, email, password, first_name="", last_name="", username="",
     connection.close()
 
 
-def insert_an_item(db, is_rented, item_name, category, price, owner_id=0, description="", photo_url="http://placehold.it/750x300", date_added="",
+def insert_an_item(db, is_rented, item_name, category, price, owner_id=0, description="", photo_url="", date_added="",
                    date_removed=""):
     if is_rented:
         itemid = "SELECT item_id FROM Available_Items WHERE item_name ='%s' AND owner_id = %d" % (item_name, owner_id)
