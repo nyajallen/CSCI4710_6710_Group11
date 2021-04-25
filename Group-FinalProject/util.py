@@ -3,11 +3,17 @@ import numpy as np
 import sqlite3
 
 
-def get_an_item(db, item_id):
-    query = "SELECT * FROM Available_Items WHERE item_id = %d" % item_id
+def get_an_item(db, username, item_name):
+    owner_id_query = "SELECT ID FROM Users WHERE username= '%s'" % username
 
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
+    cursor.execute(owner_id_query)
+    owner_id = cursor.fetchall()
+    owner_id = owner_id[0][0]
+
+    query = "SELECT * FROM Available_Items WHERE item_name = '%s' AND owner_id=%d" % (item_name, owner_id)
+
     cursor.execute(query)
     query_results = cursor.fetchall()
     cursor.close()
@@ -89,8 +95,9 @@ def get_user_items(db, username):
     cursor = connection.cursor()
     cursor.execute(owner_id_query)
     owner_id = cursor.fetchall()
+    owner_id =owner_id[0][0]
 
-    query = "SELECT * FROM Available_Items WHERE username = '%s'" % owner_id
+    query = "SELECT * FROM Available_Items WHERE owner_id = '%s'" % owner_id
     cursor.execute(query)
     query_results = cursor.fetchall()
     cursor.close()

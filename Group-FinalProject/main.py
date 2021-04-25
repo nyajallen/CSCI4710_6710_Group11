@@ -63,7 +63,7 @@ def index():
     for item in items:
         addname = list(item)
         name= util.get_username('RentAnItemDb.db', item[1])
-        print(name)
+        name= name[0]
         addname.append(name)
         items_with_owners.append(addname)
 
@@ -82,10 +82,11 @@ def signup():
     return render_template('signup.html')
 
 
-@app.route('/readmore')
-def readmore():
-    item = util.get_an_item('RentAnItemDb.db')
-    return render_template('read_more.html')
+@app.route('/readmore/<ownername>/<item_name>')
+def readmore(ownername, item_name):
+    item = util.get_an_item('RentAnItemDb.db', ownername, item_name)
+    return render_template('read_more.html', item_name=item[0][2], price=item[0][4], description=item[0][5], date_added=item[0][6], 
+                            end_date=item[0][7], owner= ownername)
 
 
 @app.route('/checkout')
@@ -118,7 +119,7 @@ def save_new_item():
     date_added = request.form['date_added']
     due_date = request.form['due_date']
 
-    util.insert_an_item('RentAnItemDb.db', False, item_name, category, price, ownerId, description, date_added, due_date)
+    util.insert_an_item('RentAnItemDb.db', False, item_name, category, price, ownerId, description, "", date_added, due_date)
 
     return render_template('read_more.html')
                               
@@ -132,11 +133,11 @@ def add_new_user():
     global password
     password = request.form['password']
     global ownerId
+
+    util.insert_a_user('RentAnItemDb.db', email, password, first_name, last_name, username)
     ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
     ownerId = ownerId[0][0]
-
-    
-    util.insert_a_user('RentAnItemDb.db', email, password, first_name, last_name, username)
+    print(ownerId)
     return render_template('account.html', firstname= first_name, lastname= last_name, email= email, username=username)
 
 @app.route('/api/login', methods=['POST'])
@@ -147,7 +148,7 @@ def login_a_user():
     password = request.form['Pass']
     global ownerId
     ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
-    ownerId = ownerId[0][0]
+    ownerId = ownerId[0]
     print(ownerId)
 
     userinfo = util.get_a_user('RentAnItemDb.db', username, password)
