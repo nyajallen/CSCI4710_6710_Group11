@@ -62,17 +62,17 @@
         </h1>
 
         <!-- Blog Post -->
-        {% for item in items %}
+        {% for item in items_list %}
         <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <img class="card-img-top" src="{{item[6]}}" alt="Card image cap">
           <div class="card-body">
-            <h2 class="card-title">{{item_name}}</h2>
-            <p class="card-text">{{price}}</p>
-            <a href="/read_more" class="btn btn-primary">Read More &rarr;</a>
+            <h2 class="card-title">{{item[2]}}</h2>
+            <p class="card-text">Price: {{item[4]}}</p>
+            <a href="/readmore" class="btn btn-primary">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            {{date_added}} by
-            <a href="#">{{username}}</a>
+            {{item[7]}} by
+            <a href="#">{{item[9][0]}}</a>
           </div>
         </div>
         {% endfor %}

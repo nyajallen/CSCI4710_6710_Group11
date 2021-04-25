@@ -56,22 +56,19 @@ class RentedItems(db.Model):
 @app.route('/')
 def index():
     items = util.get_all_items('RentAnItemDb.db')
-    names=[]
-    prices=[]
-    dates=[]
-    owners=[]
-
+    items_with_owners = []
+    print(items)
+    print('\n\n')
+    
     for item in items:
-        names.append(item[2])
-        prices.append(item[4])
-        dates.append(item[7])
-        name = util.get_username('RentAnItemDb.db', item[1])
-        owners.append(name)
+        addname = list(item)
+        name= util.get_username('RentAnItemDb.db', item[1])
+        addname.append(name)
+        items_with_owners.append(addname)
 
-    print(names)
-    print(prices)
-    print(dates)
-    return render_template('index.html', names_list= names, price_list= prices, dates_list=dates, owners_list= owners)
+
+    print(items_with_owners)
+    return render_template('index.html', items_list= items_with_owners)
 
 
 @app.route('/login')
@@ -86,6 +83,7 @@ def signup():
 
 @app.route('/readmore')
 def readmore():
+    item = util.get_an_item('RentAnItemDb.db')
     return render_template('read_more.html')
 
 
