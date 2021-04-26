@@ -88,16 +88,11 @@ def insert_an_item(db, is_rented, item_name, category, price, owner_id=0, descri
     connection.close()
 
 
-def get_user_items(db, username):
-    owner_id_query = "SELECT ID FROM Users WHERE username= '%s'" % username
+def get_user_items(db, owner_id):
+    query = "SELECT * FROM Available_Items WHERE owner_id = '%s'" % owner_id
 
     connection = sqlite3.connect(db)
     cursor = connection.cursor()
-    cursor.execute(owner_id_query)
-    owner_id = cursor.fetchall()
-    owner_id =owner_id[0][0]
-
-    query = "SELECT * FROM Available_Items WHERE owner_id = '%s'" % owner_id
     cursor.execute(query)
     query_results = cursor.fetchall()
     cursor.close()

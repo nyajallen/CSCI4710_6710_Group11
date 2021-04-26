@@ -105,7 +105,10 @@ def account():
         flash('You are not signed in')
     else:
         userinfo = util.get_a_user('RentAnItemDb.db', username, password)
-        return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3], username= username)
+        user_items = util.get_user_items('RentAnItemDb.db', ownerId)
+        print(user_items)
+        return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3], username= username,
+                                user_items=user_items)
 
     return render_template('account.html')
 
@@ -157,7 +160,9 @@ def add_new_user():
     util.insert_a_user('RentAnItemDb.db', email, password, first_name, last_name, username)
     ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
     ownerId = ownerId[0][0]
-    return render_template('account.html', firstname= first_name, lastname= last_name, email= email, username=username)
+    user_items = util.get_user_items('RentAnItemDb.db', ownerId)
+    print(user_items)
+    return render_template('account.html', firstname= first_name, lastname= last_name, email= email, username=username, user_items=user_items)
 
 @app.route('/api/login', methods=['POST'])
 def login_a_user():
@@ -170,7 +175,10 @@ def login_a_user():
     ownerId = ownerId[0][0]
 
     userinfo = util.get_a_user('RentAnItemDb.db', username, password)
-    return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3], username= username)
+    user_items = util.get_user_items('RentAnItemDb.db', ownerId)
+    print(user_items)
+    return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3], username= username,
+                            user_items=user_items)
 
 @app.route('/search_results', methods=['POST'])
 def search_results():
