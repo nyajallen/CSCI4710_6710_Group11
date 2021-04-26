@@ -1,6 +1,6 @@
-body {
+/*body {
     padding-top: 56px;
-  }
+  }*/
 .bg-dark
 {
     background-color:#343a40!important
@@ -11,7 +11,7 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover
     background-color:#1d2124!important
 }
 
-.navbar
+/*/*.navbar
 {
     position:relative;
     display:-ms-flexbox;
@@ -719,7 +719,7 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover
 .navbar-dark .navbar-nav .active>.nav-link,.navbar-dark .navbar-nav .nav-link.active,.navbar-dark .navbar-nav .nav-link.show,.navbar-dark .navbar-nav .show>.nav-link
 {
     color:#fff
-}
+}*/
 
 .fixed-top
 {

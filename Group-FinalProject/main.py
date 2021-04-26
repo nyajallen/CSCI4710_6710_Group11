@@ -233,6 +233,27 @@ def category_search(category):
 
     return render_template("search_results.html")
 
+@app.route('/checkout_items')
+def checkout_items():
+    flash('Thanks for shopping with us!')
+    shopping_cart = []
+
+    items = util.get_all_items('RentAnItemDb.db')
+    items_with_owners = []
+    
+    for item in items:
+        addname = list(item)
+        name= util.get_username('RentAnItemDb.db', item[1])
+        name= name[0]
+        addname.append(name)
+        items_with_owners.append(addname)
+
+
+    print(items_with_owners)
+    return render_template('index.html', items_list= items_with_owners)
+
+
+
 if __name__ == '__main__':
     app.debug = True
     ip = '127.0.0.1'
