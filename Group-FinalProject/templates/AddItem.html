@@ -3,9 +3,9 @@
 {% block title %}Add an Item{% endblock %}
 
 {% block content %}
-
+<!--Start Content-->
 <h1 style="padding: 10px">Add an Item to Rent</h1>
-
+<!--Add an Item Form-->
 <div>
     <form action="/api/saveItem" method="post" enctype="multipart/form-data">
         <div class="form-group col-md-6" id="form">
@@ -48,6 +48,8 @@
         </div>
     </form>
 </div>
+<!--End of Form-->
+<!--End Content-->
 <script>
     const loadFile = function (event) {
     const image = document.getElementById('output');

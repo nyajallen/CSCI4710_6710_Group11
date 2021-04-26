@@ -65,8 +65,11 @@
 {% endblock %}
 
 {% block content %}   
+<!--Start Content-->
+<!--Login Page-->
     <h2>Login Page</h2><br>    
     <div class="login">    
+        <!--Form for Login Info-->
         <form action="/api/login" method="post">    
             <label><b>User Name</b></label>    
             <input type="text" name="Uname" id="Uname" placeholder="Username" required>    
@@ -82,4 +85,5 @@
             <a href="signup.html" style="float: right; background-color: grey">Sign up</a>    
         </form>     
     </div>    
+<!--End Content-->
 {% endblock %}
