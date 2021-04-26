@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, jsonify, json, request, flash
+from flask import Flask, render_template, jsonify, json, request, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 from http import HTTPStatus
 
@@ -17,6 +17,7 @@ db = SQLAlchemy(app)
 ownerId = 0
 username=''
 password=''
+shopping_cart=[]
 
 class Users(db.Model):
     __tablename__ = 'users'
@@ -109,6 +110,13 @@ def account():
 
     return render_template('account.html')
 
+@app.route('/cart/<item_name>/<price>/<time>')
+def add_to_cart(item_name, price, time):
+    global shopping_cart
+    shopping_cart = util.add_to_cart(item_name, price + "/" + time, shopping_cart)
+    flash('Item added to your cart!')
+    
+    return render_template('index.html')
 
 @app.route('/api/saveItem', methods=['POST'])
 def save_new_item():

@@ -129,6 +129,11 @@ def get_username(db, owner_id):
 
     return query_results
 
+def add_to_cart(item_name, price, cart_list):
+    cart_list.append((item_name, price))
+    print(cart_list)
+
+    return cart_list
 
 
 def convert_to_binary(filename):
