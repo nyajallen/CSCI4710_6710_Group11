@@ -17,7 +17,7 @@ db = SQLAlchemy(app)
 ownerId = 0
 username=''
 password=''
-shopping_cart=[]
+shopping_cart=[0]
 
 class Users(db.Model):
     __tablename__ = 'users'
@@ -92,7 +92,7 @@ def readmore(ownername, item_name):
 
 @app.route('/checkout')
 def checkout():
-    return render_template('checkout.html')
+    return render_template('checkout.html', items_list=shopping_cart)
 
 
 @app.route('/addItem')
@@ -114,7 +114,10 @@ def account():
 def add_to_cart(item_name, price, time):
     global shopping_cart
     shopping_cart = util.add_to_cart(item_name, price + "/" + time, shopping_cart)
+    shopping_cart[0] = shopping_cart[0] + float(price)
+
     flash('Item added to your cart!')
+
     
     return render_template('index.html')
 
