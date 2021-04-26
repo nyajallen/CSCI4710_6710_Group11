@@ -184,7 +184,13 @@ def search_results
     results = session.query(Store).all()
     for i in results:
         if (item_name in i.item_name) is True:
-            list1.append()
+            list1.append(category)
+            list2.append(price)
+            list3.append(description)
+            list4.append(date_added)
+            list5.append(due_date)
+    return render_template("search_results.html", result1 = list1, result2 = list2, result3 = list3, result4 = list4, result5 = list5)
+    session.commit()
 
 
 if __name__ == '__main__':
