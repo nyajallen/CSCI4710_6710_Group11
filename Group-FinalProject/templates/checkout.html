@@ -114,9 +114,11 @@ span.price {
 {% endblock %}
 
 {% block content %}   
+<!--Start Content-->
 <div class="row">
   <div class="col-75">
     <div class="container heart">
+
       <form action="/checkout_items">
       
         <div class="row">
@@ -142,7 +144,7 @@ span.price {
               </div>
             </div>
           </div>
-
+          <!--User Card Info Form-->
           <div class="col-50">
             <h3>Payment</h3>
             <label for="fname">Accepted Cards</label>
@@ -178,6 +180,7 @@ span.price {
       </form>
     </div>
   </div>
+  <!--Items in Cart-->
   <div class="col-25">
     <div class="container soul">
       <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{total_items}}</b></span></h4>
@@ -189,5 +192,6 @@ span.price {
     </div>
   </div>
 </div>
+<!--End Content-->
 
 {% endblock %}
