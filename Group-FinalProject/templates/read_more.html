@@ -5,10 +5,10 @@
 
 {% block content %}
 <!--Item Info-->
-    <h1 class="my-4">Item Name: {{item_name}}<br>
+    <h1 class="my-4">{{item_name}}<br>
         <small>Price: {{price}}</small>
     </h1>
-      <img class="card-body" src="http://placehold.it/750x300" alt="Card image cap" width="750" height="500">
+      <img class="card-body" src="{{image}}" alt="Card image cap" width="750" height="500">
       <div class="howl">How Long Can I Rent? From: {{date_added}} To: {{end_date}}</div>
       <p class="card-text">Description: {{description}}</p>
       <p class="card-text">Owner: {{owner}}</p>

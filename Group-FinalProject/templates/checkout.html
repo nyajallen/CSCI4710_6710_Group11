@@ -213,7 +213,7 @@ span.price {
   </div>
   <div class="col-25">
     <div class="container soul">
-      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{total_items}}</b></span></h4>
       {% for item in items_list[1:] %}
         <p><a href="#">{{item[0]}}</a> <span class="price">{{item[1]}}</span></p>
       {% endfor %}

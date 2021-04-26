@@ -7,7 +7,7 @@
 <h1 style="padding: 10px">Add an Item to Rent</h1>
 
 <div>
-    <form action="/api/saveItem" method="post">
+    <form action="/api/saveItem" method="post" enctype="multipart/form-data">
         <div class="form-group col-md-6" id="form">
                 <label for="item_name">What is this Item? *</label>
                 <input type="text" class="form-control" name="item_name" placeholder="Ex: Blender, Drill" style="margin-bottom: 20px;" required>
