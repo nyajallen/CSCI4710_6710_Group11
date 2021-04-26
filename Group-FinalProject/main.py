@@ -1,16 +1,18 @@
 import os
 
-from flask import Flask, render_template, jsonify, json, request, flash, redirect
+from flask import Flask, render_template, jsonify, json, request, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from http import HTTPStatus
 
 import util
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+UPLOAD_IMAGE_FOLDER = '/static/images/'
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///RentAnItemDb.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['UPLOAD_PATH'] = basedir + UPLOAD_IMAGE_FOLDER
 app.secret_key = 'for cookies'
 
 db = SQLAlchemy(app)
@@ -58,8 +60,6 @@ class RentedItems(db.Model):
 def index():
     items = util.get_all_items('RentAnItemDb.db')
     items_with_owners = []
-    print(items)
-    print('\n\n')
     
     for item in items:
         addname = list(item)
@@ -86,13 +86,13 @@ def signup():
 @app.route('/readmore/<ownername>/<item_name>')
 def readmore(ownername, item_name):
     item = util.get_an_item('RentAnItemDb.db', ownername, item_name)
-    return render_template('read_more.html', item_name=item[0][2], price=item[0][4], description=item[0][5], date_added=item[0][6], 
-                            end_date=item[0][7], owner= ownername)
+    return render_template('read_more.html', item_name=item[0][2], price=item[0][4], description=item[0][5], image=item[0][6],
+                            date_added=item[0][7], end_date=item[0][8], owner= ownername)
 
 
 @app.route('/checkout')
 def checkout():
-    return render_template('checkout.html', items_list=shopping_cart)
+    return render_template('checkout.html', items_list=shopping_cart, total_items=len(shopping_cart)-1)
 
 
 @app.route('/addItem')
@@ -105,7 +105,6 @@ def account():
         flash('You are not signed in')
     else:
         userinfo = util.get_a_user('RentAnItemDb.db', username, password)
-        print(userinfo[0][1])
         return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3], username= username)
 
     return render_template('account.html')
@@ -129,10 +128,20 @@ def save_new_item():
     description = request.form['description']
     date_added = request.form['date_added']
     due_date = request.form['due_date']
+    image = request.files['image']
 
-    util.insert_an_item('RentAnItemDb.db', False, item_name, category, price, ownerId, description, "", date_added, due_date)
+    if image.filename != '':
+        image.save(os.path.join(app.config['UPLOAD_PATH'], image.filename))
+        image = UPLOAD_IMAGE_FOLDER + image.filename
+    else:
+        image = "/static/images/item.png"
 
-    return render_template('read_more.html')
+    util.insert_an_item('RentAnItemDb.db', False, item_name, category, price, ownerId, description, image, date_added, due_date)
+    ownername = util.get_username('RentAnItemDb.db', ownerId)
+    ownername = ownername[0][0]
+
+    return render_template('read_more.html', item_name=item_name, price=price, description=description, date_added=date_added, 
+                            end_date=due_date, owner= ownername, image=image)
                               
 @app.route('/api/signup', methods=['POST'])
 def add_new_user():
@@ -148,7 +157,6 @@ def add_new_user():
     util.insert_a_user('RentAnItemDb.db', email, password, first_name, last_name, username)
     ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
     ownerId = ownerId[0][0]
-    print(ownerId)
     return render_template('account.html', firstname= first_name, lastname= last_name, email= email, username=username)
 
 @app.route('/api/login', methods=['POST'])
@@ -159,11 +167,9 @@ def login_a_user():
     password = request.form['Pass']
     global ownerId
     ownerId = util.get_owner_id('RentAnItemDb.db', username, password)
-    ownerId = ownerId[0]
-    print(ownerId)
+    ownerId = ownerId[0][0]
 
     userinfo = util.get_a_user('RentAnItemDb.db', username, password)
-    print(userinfo[0][1])
     return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3], username= username)
 
 @app.route('/search_results', methods=['POST'])
