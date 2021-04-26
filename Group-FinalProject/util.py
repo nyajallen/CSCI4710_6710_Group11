@@ -149,6 +149,12 @@ def search_for_items_cat(db, category):
         'Appliances': 3,
         'Movies': 11,
         'Yard': 1,
+        'Household': 2,
+        'Recreational': 4,
+        'Party': 5,
+        'Electronics': 7,
+        'Automotive': 8,
+        'Beach': 9,
         'Miscellanious': 12
     }
 
