@@ -130,6 +130,40 @@ def add_to_cart(item_name, price, cart_list):
 
     return cart_list
 
+def search_for_items(db, item_name):
+    query = "SELECT * FROM Available_Items WHERE item_name= '%s'" % item_name
+
+    connection = sqlite3.connect(db)
+    cursor = connection.cursor()
+    cursor.execute(query)
+    query_results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+
+    return query_results
+
+def search_for_items_cat(db, category):
+    cat = {
+        'Tools': 6,
+        'Games': 10,
+        'Appliances': 3,
+        'Movies': 11,
+        'Yard': 1,
+        'Miscellanious': 12
+    }
+
+    category = cat.get(category, -1)
+
+    query = "SELECT * FROM Available_Items WHERE category= %d" % category
+
+    connection = sqlite3.connect(db)
+    cursor = connection.cursor()
+    cursor.execute(query)
+    query_results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+
+    return query_results
 
 def convert_to_binary(filename):
     # Convert digital data to binary format

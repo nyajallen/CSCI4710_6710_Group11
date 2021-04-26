@@ -120,8 +120,19 @@ def add_to_cart(item_name, price, time):
 
     flash('Item added to your cart!')
 
+    items = util.get_all_items('RentAnItemDb.db')
+    items_with_owners = []
     
-    return render_template('index.html')
+    for item in items:
+        addname = list(item)
+        name= util.get_username('RentAnItemDb.db', item[1])
+        name= name[0]
+        addname.append(name)
+        items_with_owners.append(addname)
+
+
+    print(items_with_owners)
+    return render_template('index.html', items_list= items_with_owners)
 
 @app.route('/api/saveItem', methods=['POST'])
 def save_new_item():
@@ -180,26 +191,47 @@ def login_a_user():
     return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3], username= username,
                             user_items=user_items)
 
-@app.route('/search_results', methods=['POST'])
+@app.route('/api/search_results', methods=['POST'])
 def search_results():
-    item_name = request.form['item_name']
-    category = request.form['category']
-    price = request.form['price'] + '/' + request.form['per']
-    description = request.form['description']
-    date_added = request.form['date_added']
-    due_date = request.form['due_date']
-    session = Session()
-    results = session.query(Store).all()
-    for i in results:
-        if (item_name in i.item_name) is True:
-            list1.append(category)
-            list2.append(price)
-            list3.append(description)
-            list4.append(date_added)
-            list5.append(due_date)
-    return render_template("search_results.html", result1 = list1, result2 = list2, result3 = list3, result4 = list4, result5 = list5)
-    session.commit()
+    search= request.form['search']
 
+    
+    searched_items = util.search_for_items('RentAnItemDb.db', search)
+    items_with_owners = []
+    if searched_items == []:
+        flash("No Items Found")
+    else:
+        for item in searched_items:
+            addname = list(item)
+            name= util.get_username('RentAnItemDb.db', item[1])
+            name= name[0]
+            addname.append(name)
+            items_with_owners.append(addname)
+
+        return render_template("search_results.html", items_list=items_with_owners)
+
+    return render_template("search_results.html")
+
+
+@app.route('/category_search/<category>')
+def category_search(category):
+    searched_items = util.search_for_items_cat('RentAnItemDb.db', category)
+    items_with_owners = []
+    print(searched_items)
+
+    if searched_items == []:
+        flash("No Items Found")
+    else:
+        for item in searched_items:
+            addname = list(item)
+            name= util.get_username('RentAnItemDb.db', item[1])
+            name= name[0]
+            addname.append(name)
+            items_with_owners.append(addname)
+
+        return render_template("search_results.html", items_list=items_with_owners)
+
+    return render_template("search_results.html")
 
 if __name__ == '__main__':
     app.debug = True

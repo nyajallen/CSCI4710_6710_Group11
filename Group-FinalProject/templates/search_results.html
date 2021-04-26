@@ -31,7 +31,7 @@
               {% for message in messages %}
                 <h2>{{message}}</h2>
               {% endfor %}
-            ss{% endif %}
+            {% endif %}
           {% endwith %}
       </div>
     <div class="row">
@@ -46,7 +46,7 @@
         <!-- Blog Post -->
         {% for item in items_list %}
         <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <img class="card-img-top" src="{{item[6]}}" alt="Card image cap" width="750" height="500">
           <div class="card-body">
             <h2 class="card-title">{{item[2]}}</h2>
             <p class="card-text">Price: {{item[4]}}</p>
@@ -79,10 +79,12 @@
           <h5 class="card-header">Search</h5>
           <div class="card-body">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-append">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
+              <form action="/api/search_results" method="post">
+                <input type="text" name="search" placeholder="Search for...">
+                <span class="input-group-append">
+                  <input class="btn btn-secondary" type="submit" value="Go!"/>
+                </span>
+              </form>
             </div>
           </div>
         </div>
@@ -95,26 +97,26 @@
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">Tools</a>
+                    <a href="/category_search/Tools">Tools</a>
                   </li>
                   <li>
-                    <a href="#">Games</a>
+                    <a href="/category_search/Games">Games</a>
                   </li>
                   <li>
-                    <a href="#">Appliances</a>
+                    <a href="/category_search/Appliances">Appliances</a>
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">Movies</a>
+                    <a href="/category_search/Movies">Movies</a>
                   </li>
                   <li>
-                    <a href="#">Consoles</a>
+                    <a href="/category_search/Yard">Yard Tools</a>
                   </li>
                   <li>
-                    <a href="#">Miscellanious</a>
+                    <a href="/category_search/Miscellanious">Miscellanious</a>
                   </li>
                 </ul>
               </div>
@@ -122,7 +124,7 @@
           </div>
         </div>
 
-  
+    
 
       </div>
 
@@ -134,12 +136,12 @@
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">
-    <!--<div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    /.container -->
+ 
   </footer>
   {% endblock %}
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
