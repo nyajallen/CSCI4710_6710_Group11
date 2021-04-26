@@ -46,7 +46,7 @@
         <!-- Blog Post -->
         {% for item in items_list %}
         <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <img class="card-img-top" src="{{item[6]}}" alt="Card image cap" width="750" height="500">
           <div class="card-body">
             <h2 class="card-title">{{item[2]}}</h2>
             <p class="card-text">Price: {{item[4]}}</p>

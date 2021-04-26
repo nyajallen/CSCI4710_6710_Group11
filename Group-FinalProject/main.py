@@ -173,7 +173,7 @@ def login_a_user():
     return render_template('account.html', firstname= userinfo[0][1], lastname= userinfo[0][2], email= userinfo[0][3], username= username)
 
 @app.route('/search_results', methods=['POST'])
-def search_results
+def search_results():
     item_name = request.form['item_name']
     category = request.form['category']
     price = request.form['price'] + '/' + request.form['per']
